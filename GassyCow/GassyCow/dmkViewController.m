@@ -1,6 +1,6 @@
 //
 //  dmkViewController.m
-//  GrassyCow
+//  GassyCow
 //
 //  Created by Kevin Ruan on 3/25/14.
 //  Copyright (c) 2014 Kevin Ruan. All rights reserved.
@@ -11,17 +11,17 @@
 
 @implementation dmkViewController
 
-- (void)viewDidLoad
+- (void)viewWillLayoutSubviews
 {
-    [super viewDidLoad];
+    [super viewWillLayoutSubviews];
 
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
+    SKView *skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [dmkMyScene sceneWithSize:skView.bounds.size];
+    SKScene *scene = [dmkMyScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

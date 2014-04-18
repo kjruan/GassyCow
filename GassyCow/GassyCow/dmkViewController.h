@@ -1,6 +1,6 @@
 //
 //  dmkViewController.h
-//  GrassyCow
+//  GassyCow
 //
 
 //  Copyright (c) 2014 Kevin Ruan. All rights reserved.
