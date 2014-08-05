@@ -80,6 +80,10 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 }
 
 
+- (void)cowFloat:(SKNode *)cow {
+
+}
+
 - (void)spawnCowAtLocation:(int)count
                  leftBound:(CGFloat)lBound
                 rightBound:(CGFloat)rBound
@@ -105,6 +109,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     // Add cow to screen
     [self addChild:cow];
+    
     
     
     SKAction *grow = [SKAction scaleTo:1.5 duration:1.0];
