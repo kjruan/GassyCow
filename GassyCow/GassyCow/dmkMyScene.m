@@ -93,6 +93,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     }];
 }
 
+// NOT USED!! //
 - (void)spawnCowAtLocation:(int)count
                  leftBound:(CGFloat)lBound
                 rightBound:(CGFloat)rBound
@@ -146,6 +147,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     
+    // removes walking animation when cow is touched
     [self.physicsWorld enumerateBodiesAtPoint:location usingBlock:
      ^(SKPhysicsBody *body, BOOL *stop) {
          if (body.categoryBitMask == CNPhysicsCategoryCow) {

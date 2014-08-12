@@ -36,6 +36,7 @@
 }
 
 -(void)fly {
+    // Flying means taking off gravity. 
     self.physicsBody.affectedByGravity = NO;
     [[self physicsBody] applyForce:CGVectorMake(5.0, 1.0) atPoint:CGPointMake(0.0, 0.0)];
 }
