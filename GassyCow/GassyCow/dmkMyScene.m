@@ -30,6 +30,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 {
     SKNode *_gameNode;
     int _currentLevel;
+    NSTimeInterval _lastUpdateTime;
+    NSTimeInterval _dt;
 }
 @synthesize motionManager;
 
@@ -53,8 +55,11 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     CGRect customRect = CGRectMake(0, 50, self.frame.size.width, self.frame.size.height - 50);
     
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:customRect];
+    
     self.physicsWorld.contactDelegate = self;
-    self.physicsBody.categoryBitMask = CNPhysicsCategoryEdge;
+    self.physicsWorld.gravity = CGVectorMake(0.0, -9.8);
+    
+    self.physicsBody.collisionBitMask = CNPhysicsCategoryEdge;
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryLabel;
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"Level1"];
     bg.position = CGPointMake(self.size.width/2, self.size.height/2);
@@ -66,6 +71,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 - (void)spawnCowAtLocation:(CGPoint)pos
 {
     SKSpriteNode *cow = [SKSpriteNode spriteNodeWithImageNamed:@"Cow2"];
+    cow.name = @"cow";
     cow.position = pos;
     
     [_gameNode addChild:cow];
@@ -73,15 +79,25 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     CGSize contactSize = CGSizeMake(cow.size.width/2, cow.size.height/2);
     
     cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
-    
     cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
     cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
     cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge; //| CNPhysicsCategoryCowPen
+    
+
 }
 
 
-- (void)cowFloat:(SKNode *)cow {
+- (void)cowWonder:(SKNode *)cow {
+    SKAction *wait = [SKAction waitForDuration:5];
+    SKAction *wonderLeft = [SKAction sequence:@[[SKAction scaleXTo:cow.xScale * -1 duration:0],[SKAction moveByX:15 y:0 duration:5]]];
+    SKAction *wonderRight = [SKAction sequence:@[[SKAction scaleXTo:cow.xScale duration:0],[SKAction moveByX:-15 y:0 duration:5]]];
+    [cow runAction:[SKAction repeatActionForever:[SKAction sequence:@[wonderLeft, wait, wonderRight]]] withKey:@"cowWonder"];
+    
+}
 
+- (void)cowFloat:(SKNode *)cow {
+    cow.physicsBody.affectedByGravity = NO;
+    [[cow physicsBody] applyForce:CGVectorMake(0.5, 0.01) atPoint:CGPointMake(0.0, 0.0)];
 }
 
 - (void)spawnCowAtLocation:(int)count
@@ -109,7 +125,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     // Add cow to screen
     [self addChild:cow];
-    
     
     
     SKAction *grow = [SKAction scaleTo:1.5 duration:1.0];
@@ -142,53 +157,31 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
      ^(SKPhysicsBody *body, BOOL *stop) {
          if (body.categoryBitMask == CNPhysicsCategoryCow) {
              SKSpriteNode *cow = (SKSpriteNode *)body.node;
+             cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
              [body applyImpulse:CGVectorMake(0, 0.5) atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
+             [cow removeActionForKey:@"cowWonder"];
          }
      }];
 }
 
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *touch = [touches anyObject];
-//    CGPoint touchLocation = [touch locationInNode:self];
-//    for (SKSpriteNode *node in self.children) {
-//        if ([node.name isEqualToString:@"cow"]) {
-//            if (touchLocation.x < node.position.x) {
-//                [node.physicsBody applyImpulse:CGVectorMake(arc4random() % 8, arc4random() % 5)];
-//                //NSLog(@"%u",arc4random() % 8);
-//            }
-//            if (touchLocation.x > node.position.x) {
-//                [node.physicsBody applyImpulse:CGVectorMake(-2, 5)];
-//                //NSLog(@"%i", (int)(arc4random() % 8) * -1);
-//            }
-//        }
-//    }
-//
-//}
-
-
-/**
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
-}
-*/
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    if (_lastUpdateTime) {
+        _dt = currentTime - _lastUpdateTime;
+    } else {
+        _dt = 0;
+    }
+    _lastUpdateTime = currentTime;
+    
+    NSInteger ti = (NSInteger)currentTime;
+    NSInteger seconds = ti % 60;
+    NSInteger minutes = (ti / 60) % 60;
+    NSInteger hours = (ti / 3600);
+    
+    NSLog(@"%02ld", _dt);
+    
+    
     
 }
 
