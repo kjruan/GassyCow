@@ -74,6 +74,13 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     CGSize contactSize = CGSizeMake(cow.size.width/2, cow.size.height/2);
     
     cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
+  
+    //Add physics properties
+    cow.physicsBody.restitution = 0.25;
+    cow.physicsBody.angularDamping = 10;
+    cow.physicsBody.allowsRotation = YES;
+    
+    
     
     cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
     cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
@@ -105,8 +112,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     CGSize contactSize = CGSizeMake(cow.size.width / 2, cow.size.height / 2);
     cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
     //cow.physicsBody.mass
-    cow.physicsBody.allowsRotation = NO;
-    cow.physicsBody.angularDamping = 1;
     
     //cow.physicsBody.angularDamping = 1;
     
@@ -115,12 +120,10 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     
     
-    SKAction *grow = [SKAction scaleTo:1.5 duration:1.0];
-    SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
-    [cow runAction:[SKAction repeatActionForever:
-                    [SKAction sequence:@[grow, undoGrow]]]];
+//    SKAction *grow = [SKAction scaleTo:1 duration:1.0];
 //    SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
 //    [cow runAction:[SKAction repeatActionForever:
+//                    [SKAction sequence:@[grow, undoGrow]]]];
     
 }
 
