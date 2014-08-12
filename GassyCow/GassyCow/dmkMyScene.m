@@ -57,9 +57,14 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:customRect];
     
     self.physicsWorld.contactDelegate = self;
+<<<<<<< HEAD
     self.physicsWorld.gravity = CGVectorMake(0.0, -9.8);
     
     self.physicsBody.collisionBitMask = CNPhysicsCategoryEdge;
+=======
+    self.physicsWorld.gravity = CGVectorMake(0.0, -2); //Change Gravity
+    self.physicsBody.categoryBitMask = CNPhysicsCategoryEdge;
+>>>>>>> FETCH_HEAD
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryLabel;
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"Level1"];
     bg.position = CGPointMake(self.size.width/2, self.size.height/2);
@@ -79,6 +84,17 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     CGSize contactSize = CGSizeMake(cow.size.width/2, cow.size.height/2);
     
     cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
+<<<<<<< HEAD
+=======
+  
+    //Add physics properties
+    cow.physicsBody.restitution = 0.25;
+    cow.physicsBody.angularDamping = 10;
+    cow.physicsBody.allowsRotation = YES;
+    
+    
+    
+>>>>>>> FETCH_HEAD
     cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
     cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
     cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge; //| CNPhysicsCategoryCowPen
@@ -120,17 +136,25 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     CGSize contactSize = CGSizeMake(cow.size.width / 2, cow.size.height / 2);
     cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
     //cow.physicsBody.mass
-    cow.physicsBody.allowsRotation = NO;
-    cow.physicsBody.angularDamping = 1;
+    
+    //cow.physicsBody.angularDamping = 1;
     
     // Add cow to screen
     [self addChild:cow];
     
     
+<<<<<<< HEAD
     SKAction *grow = [SKAction scaleTo:1.5 duration:1.0];
     SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
     [cow runAction:[SKAction repeatActionForever:
                     [SKAction sequence:@[grow, undoGrow]]]];
+=======
+    
+//    SKAction *grow = [SKAction scaleTo:1 duration:1.0];
+//    SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
+//    [cow runAction:[SKAction repeatActionForever:
+//                    [SKAction sequence:@[grow, undoGrow]]]];
+>>>>>>> FETCH_HEAD
     
 }
 
