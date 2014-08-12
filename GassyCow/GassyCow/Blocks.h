@@ -1,5 +1,5 @@
 //
-//  cow.h
+//  blocks.h
 //  GassyCow
 //
 //  Created by Kevin Ruan on 8/8/14.
@@ -8,6 +8,6 @@
 
 #import "Entity.h"
 
-@interface cow : Entity
+@interface Blocks : Entity
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "dmkMyScene.h"
+#import "cow.h"
 #define ARC4RANDOM_MAX  0x100000000
 
 typedef NS_OPTIONS(uint32_t, CNPhysicsCategory)
@@ -57,14 +58,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:customRect];
     
     self.physicsWorld.contactDelegate = self;
-<<<<<<< HEAD
     self.physicsWorld.gravity = CGVectorMake(0.0, -9.8);
     
     self.physicsBody.collisionBitMask = CNPhysicsCategoryEdge;
-=======
-    self.physicsWorld.gravity = CGVectorMake(0.0, -2); //Change Gravity
-    self.physicsBody.categoryBitMask = CNPhysicsCategoryEdge;
->>>>>>> FETCH_HEAD
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryLabel;
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"Level1"];
     bg.position = CGPointMake(self.size.width/2, self.size.height/2);
@@ -75,45 +71,26 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
 - (void)spawnCowAtLocation:(CGPoint)pos
 {
-    SKSpriteNode *cow = [SKSpriteNode spriteNodeWithImageNamed:@"Cow2"];
-    cow.name = @"cow";
-    cow.position = pos;
+    Cow *_cow = [[Cow alloc] initWithPosition:pos];
     
-    [_gameNode addChild:cow];
-    
-    CGSize contactSize = CGSizeMake(cow.size.width/2, cow.size.height/2);
-    
-    cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
-<<<<<<< HEAD
-=======
-  
-    //Add physics properties
-    cow.physicsBody.restitution = 0.25;
-    cow.physicsBody.angularDamping = 10;
-    cow.physicsBody.allowsRotation = YES;
+    //SKSpriteNode *cow = [SKSpriteNode spriteNodeWithImageNamed:@"Cow2"];
+    _cow.name = @"cow";
+    _cow.position = pos;
     
     
+    [_gameNode addChild:_cow];
     
->>>>>>> FETCH_HEAD
-    cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
-    cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
-    cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge; //| CNPhysicsCategoryCowPen
+    CGSize contactSize = CGSizeMake(_cow.size.width/2, _cow.size.height/2);
     
-
-}
-
-
-- (void)cowWonder:(SKNode *)cow {
-    SKAction *wait = [SKAction waitForDuration:5];
-    SKAction *wonderLeft = [SKAction sequence:@[[SKAction scaleXTo:cow.xScale * -1 duration:0],[SKAction moveByX:15 y:0 duration:5]]];
-    SKAction *wonderRight = [SKAction sequence:@[[SKAction scaleXTo:cow.xScale duration:0],[SKAction moveByX:-15 y:0 duration:5]]];
-    [cow runAction:[SKAction repeatActionForever:[SKAction sequence:@[wonderLeft, wait, wonderRight]]] withKey:@"cowWonder"];
+    _cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
+    _cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
+    _cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
+    _cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge; //| CNPhysicsCategoryCowPen
     
-}
-
-- (void)cowFloat:(SKNode *)cow {
-    cow.physicsBody.affectedByGravity = NO;
-    [[cow physicsBody] applyForce:CGVectorMake(0.5, 0.01) atPoint:CGPointMake(0.0, 0.0)];
+    // Walk and lift off!! Still super spinny...
+    [_cow runAction:[_cow walking] completion:^{
+        [_cow fly];
+    }];
 }
 
 - (void)spawnCowAtLocation:(int)count
@@ -136,25 +113,17 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     CGSize contactSize = CGSizeMake(cow.size.width / 2, cow.size.height / 2);
     cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
     //cow.physicsBody.mass
-    
-    //cow.physicsBody.angularDamping = 1;
+    cow.physicsBody.allowsRotation = NO;
+    cow.physicsBody.angularDamping = 1;
     
     // Add cow to screen
     [self addChild:cow];
     
     
-<<<<<<< HEAD
     SKAction *grow = [SKAction scaleTo:1.5 duration:1.0];
     SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
     [cow runAction:[SKAction repeatActionForever:
                     [SKAction sequence:@[grow, undoGrow]]]];
-=======
-    
-//    SKAction *grow = [SKAction scaleTo:1 duration:1.0];
-//    SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
-//    [cow runAction:[SKAction repeatActionForever:
-//                    [SKAction sequence:@[grow, undoGrow]]]];
->>>>>>> FETCH_HEAD
     
 }
 
@@ -183,29 +152,26 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              SKSpriteNode *cow = (SKSpriteNode *)body.node;
              cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
              [body applyImpulse:CGVectorMake(0, 0.5) atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
-             [cow removeActionForKey:@"cowWonder"];
+             [cow removeActionForKey:@"walking"];
          }
      }];
 }
 
 
 -(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+    /* Called before each frame is rendered
     if (_lastUpdateTime) {
         _dt = currentTime - _lastUpdateTime;
     } else {
         _dt = 0;
     }
     _lastUpdateTime = currentTime;
+    */
     
     NSInteger ti = (NSInteger)currentTime;
     NSInteger seconds = ti % 60;
     NSInteger minutes = (ti / 60) % 60;
     NSInteger hours = (ti / 3600);
-    
-    NSLog(@"%02ld", _dt);
-    
-    
     
 }
 

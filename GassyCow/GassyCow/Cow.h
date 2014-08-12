@@ -1,13 +1,16 @@
 //
-//  blocks.m
+//  cow.h
 //  GassyCow
 //
 //  Created by Kevin Ruan on 8/8/14.
 //  Copyright (c) 2014 Kevin Ruan. All rights reserved.
 //
 
-#import "blocks.h"
+#import "Entity.h"
 
-@implementation blocks
+@interface Cow : Entity
+
+-(SKAction *)walking;
+-(void)fly;
 
 @end

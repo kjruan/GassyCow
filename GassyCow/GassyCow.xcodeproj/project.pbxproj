@@ -35,8 +35,8 @@
 		207CCDAC1908BE5800E5F67E /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA71908BE5800E5F67E /* SKTUtils.mm */; };
 		20C20D0C1927B6C60076F163 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20C20D0B1927B6C60076F163 /* level1.plist */; };
 		20C80D351995DB3700862E85 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D341995DB3700862E85 /* Entity.m */; };
-		20C80D3B1995DC2100862E85 /* cow.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3A1995DC2100862E85 /* cow.m */; };
-		20C80D3E1995DC3F00862E85 /* blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3D1995DC3F00862E85 /* blocks.m */; };
+		20C80D3B1995DC2100862E85 /* Cow.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3A1995DC2100862E85 /* Cow.m */; };
+		20C80D3E1995DC3F00862E85 /* Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3D1995DC3F00862E85 /* Blocks.m */; };
 		20DCC2E618E3EAF600DFFEB3 /* Cow.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DCC2E518E3EAF600DFFEB3 /* Cow.png */; };
 /* End PBXBuildFile section */
 
@@ -91,10 +91,10 @@
 		20C20D0B1927B6C60076F163 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
 		20C80D331995DB3700862E85 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		20C80D341995DB3700862E85 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
-		20C80D391995DC2100862E85 /* cow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cow.h; sourceTree = "<group>"; };
-		20C80D3A1995DC2100862E85 /* cow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cow.m; sourceTree = "<group>"; };
-		20C80D3C1995DC3F00862E85 /* blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blocks.h; sourceTree = "<group>"; };
-		20C80D3D1995DC3F00862E85 /* blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blocks.m; sourceTree = "<group>"; };
+		20C80D391995DC2100862E85 /* Cow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cow.h; sourceTree = "<group>"; };
+		20C80D3A1995DC2100862E85 /* Cow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cow.m; sourceTree = "<group>"; };
+		20C80D3C1995DC3F00862E85 /* Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blocks.h; sourceTree = "<group>"; };
+		20C80D3D1995DC3F00862E85 /* Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Blocks.m; sourceTree = "<group>"; };
 		20DCC2E518E3EAF600DFFEB3 /* Cow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,10 +247,10 @@
 			children = (
 				20C80D331995DB3700862E85 /* Entity.h */,
 				20C80D341995DB3700862E85 /* Entity.m */,
-				20C80D391995DC2100862E85 /* cow.h */,
-				20C80D3A1995DC2100862E85 /* cow.m */,
-				20C80D3C1995DC3F00862E85 /* blocks.h */,
-				20C80D3D1995DC3F00862E85 /* blocks.m */,
+				20C80D391995DC2100862E85 /* Cow.h */,
+				20C80D3A1995DC2100862E85 /* Cow.m */,
+				20C80D3C1995DC3F00862E85 /* Blocks.h */,
+				20C80D3D1995DC3F00862E85 /* Blocks.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -362,12 +362,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20C80D3B1995DC2100862E85 /* cow.m in Sources */,
+				20C80D3B1995DC2100862E85 /* Cow.m in Sources */,
 				20C80D351995DB3700862E85 /* Entity.m in Sources */,
 				2071D35C18E27EA900B3C849 /* dmkViewController.m in Sources */,
 				207CCDAB1908BE5800E5F67E /* SKTAudio.m in Sources */,
 				2071D35218E27EA900B3C849 /* main.m in Sources */,
-				20C80D3E1995DC3F00862E85 /* blocks.m in Sources */,
+				20C80D3E1995DC3F00862E85 /* Blocks.m in Sources */,
 				207CCDA91908BE5800E5F67E /* SKEmitterNode+SKTExtras.m in Sources */,
 				207CCDAC1908BE5800E5F67E /* SKTUtils.mm in Sources */,
 				207CCDA81908BE5800E5F67E /* SKAction+SKTExtras.m in Sources */,
