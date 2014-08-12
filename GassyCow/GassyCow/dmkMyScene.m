@@ -54,6 +54,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:customRect];
     self.physicsWorld.contactDelegate = self;
+    self.physicsWorld.gravity = CGVectorMake(0.0, -2); //Change Gravity
     self.physicsBody.categoryBitMask = CNPhysicsCategoryEdge;
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryLabel;
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"Level1"];
@@ -107,6 +108,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     cow.physicsBody.allowsRotation = NO;
     cow.physicsBody.angularDamping = 1;
     
+    //cow.physicsBody.angularDamping = 1;
+    
     // Add cow to screen
     [self addChild:cow];
     
@@ -116,6 +119,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
     [cow runAction:[SKAction repeatActionForever:
                     [SKAction sequence:@[grow, undoGrow]]]];
+//    SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
+//    [cow runAction:[SKAction repeatActionForever:
     
 }
 
