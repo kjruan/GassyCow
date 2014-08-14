@@ -72,7 +72,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 - (void)spawnCowAtLocation:(CGPoint)pos
 {
     Cow *_cow = [[Cow alloc] initWithPosition:pos];
-    
+    _cow.texture = [Cow generateTexture];
     //SKSpriteNode *cow = [SKSpriteNode spriteNodeWithImageNamed:@"Cow2"];
     _cow.name = @"cow";
     _cow.position = pos;

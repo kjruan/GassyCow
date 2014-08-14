@@ -11,8 +11,15 @@
 @implementation Cow
 
 +(SKTexture *)generateTexture {
-    SKTexture *texture = nil;
-    texture = [SKTexture textureWithImageNamed:@"cow2"];
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
+    static SKTexture *texture = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        SKSpriteNode *cow = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"Cow2"]];
+        SKView *textureView = [SKView new];
+        texture = [textureView textureFromNode:cow];
+    });
     return texture;
 }
 
@@ -20,6 +27,7 @@
 {
     if (self = [super initWithPosition:position]) {
         self.name = @"cowSprite";
+        
     }
     return self;
 }

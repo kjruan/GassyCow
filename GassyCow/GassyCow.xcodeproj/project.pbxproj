@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20114C5D199C906C00416CBC /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 20114C5C199C906C00416CBC /* sprites.atlas */; };
 		204133A918E782F900D37F83 /* Cow2.png in Resources */ = {isa = PBXBuildFile; fileRef = 204133A818E782F900D37F83 /* Cow2.png */; };
 		2071D34418E27EA900B3C849 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34318E27EA900B3C849 /* Foundation.framework */; };
 		2071D34618E27EA900B3C849 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34518E27EA900B3C849 /* CoreGraphics.framework */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20114C5C199C906C00416CBC /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		204133A818E782F900D37F83 /* Cow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cow2.png; sourceTree = "<group>"; };
 		2071D34018E27EA900B3C849 /* GassyCow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GassyCow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2071D34318E27EA900B3C849 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -208,6 +210,7 @@
 		2071D37F18E27FCE00B3C849 /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				20114C5C199C906C00416CBC /* sprites.atlas */,
 				20C20D0A1927B6990076F163 /* Levels */,
 				20DCC2E518E3EAF600DFFEB3 /* Cow.png */,
 				204133A818E782F900D37F83 /* Cow2.png */,
@@ -304,7 +307,7 @@
 				ORGANIZATIONNAME = "Kevin Ruan";
 				TargetAttributes = {
 					2071D33F18E27EA900B3C849 = {
-						DevelopmentTeam = 8AC2A766M6;
+						DevelopmentTeam = XX6M8XBL77;
 					};
 					2071D36718E27EA900B3C849 = {
 						TestTargetID = 2071D33F18E27EA900B3C849;
@@ -335,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20114C5D199C906C00416CBC /* sprites.atlas in Resources */,
 				2071D35018E27EA900B3C849 /* InfoPlist.strings in Resources */,
 				2071D36318E27EA900B3C849 /* Images.xcassets in Resources */,
 				20DCC2E618E3EAF600DFFEB3 /* Cow.png in Resources */,
@@ -458,6 +462,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 			};
 			name = Debug;
 		};
@@ -489,6 +494,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
