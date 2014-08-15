@@ -27,7 +27,6 @@
 {
     if (self = [super initWithPosition:position]) {
         self.name = @"cowSprite";
-        
     }
     return self;
 }
