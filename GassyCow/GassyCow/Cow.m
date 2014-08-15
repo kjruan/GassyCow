@@ -33,17 +33,17 @@
 
 -(SKAction *)walk {
     // Walking animation
-    
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
     NSMutableArray *textures = [NSMutableArray arrayWithCapacity:6];
     for (int i = 1; i < 2; i++) {
         NSString *textureName = [NSString stringWithFormat:@"Cow%d", i];
-        SKTexture *texture = [SKTexture textureWithImageNamed:textureName];
+        SKTexture *texture = [atlas textureNamed:textureName];
         [textures addObject:texture];
     }
     
     for (int i = 2; i > 1; i--) {
         NSString *textureName = [NSString stringWithFormat:@"Cow%d", i];
-        SKTexture *texture = [SKTexture textureWithImageNamed:textureName];
+        SKTexture *texture = [atlas textureNamed:textureName];
         [textures addObject:texture];
     }
     
@@ -57,6 +57,8 @@
     SKAction *actionGroup = [SKAction sequence:@[wonderLeft, wait, wonderRight]];
     return actionGroup;
 }
+
+    
 
 -(void)fly {
     // Flying means taking off gravity. 
