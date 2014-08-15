@@ -7,7 +7,9 @@
 //
 
 #import "dmkMyScene.h"
-#import "cow.h"
+#import "DebugDraw.h"
+#import "Cow.h"
+
 #define ARC4RANDOM_MAX  0x100000000
 
 typedef NS_OPTIONS(uint32_t, CNPhysicsCategory)
@@ -30,6 +32,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 @implementation dmkMyScene
 {
     SKNode *_gameNode;
+    SKAction *_cowAnimation;
     int _currentLevel;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
@@ -77,7 +80,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     _cow.name = @"cow";
     _cow.position = pos;
     
-    
     [_gameNode addChild:_cow];
     
     CGSize contactSize = CGSizeMake(_cow.size.width/2, _cow.size.height/2);
@@ -86,47 +88,15 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     _cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
     _cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
     _cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge; //| CNPhysicsCategoryCowPen
+    [_cow attachDebugRectWithSize:_cow.size];
     
     // Walk and lift off!! Still super spinny...
-    [_cow runAction:[_cow walking] completion:^{
+    [_cow runAction:[_cow walk] completion:^{
+        [_cow removeActionForKey:@"walkingAnimation"];
         [_cow fly];
     }];
 }
 
-// NOT USED!! //
-- (void)spawnCowAtLocation:(int)count
-                 leftBound:(CGFloat)lBound
-                rightBound:(CGFloat)rBound
-{
-    // Set random spawn point
-    CGFloat spawnPointX = ScalarRandomRange(lBound, rBound);
-    CGFloat spawnPointY = ScalarRandomRange(50, 100);
-    
-    // Create Cow
-    SKSpriteNode *cow = [SKSpriteNode spriteNodeWithImageNamed:@"Cow2"];
-    cow.position = CGPointMake(spawnPointX, spawnPointY);
-    NSLog(@"Cow Position: x: %f, y: %f", spawnPointX, spawnPointY);
-    
-    // Assign name
-    cow.name = @"cow";
-    
-    // Create physics object around the cow
-    CGSize contactSize = CGSizeMake(cow.size.width / 2, cow.size.height / 2);
-    cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
-    //cow.physicsBody.mass
-    cow.physicsBody.allowsRotation = NO;
-    cow.physicsBody.angularDamping = 1;
-    
-    // Add cow to screen
-    [self addChild:cow];
-    
-    
-    SKAction *grow = [SKAction scaleTo:1.5 duration:1.0];
-    SKAction *undoGrow = [SKAction scaleTo:1.0 duration:1.0];
-    [cow runAction:[SKAction repeatActionForever:
-                    [SKAction sequence:@[grow, undoGrow]]]];
-    
-}
 
 - (void)SetupLevel:(int)levelNum
 {
@@ -153,7 +123,11 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
          if (body.categoryBitMask == CNPhysicsCategoryCow) {
              SKSpriteNode *cow = (SKSpriteNode *)body.node;
              cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
-             [body applyImpulse:CGVectorMake(0, 0.5) atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
+             CGPoint cowPos = body.node.position;
+             CGFloat cowRotation = body.node.zRotation;
+
+             NSLog(@"x: %f, y: %f, z: %f", cowPos.x, cowPos.y, cowRotation);
+             //[body applyImpulse:CGVectorMake(0, 0.5) atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
              [cow removeActionForKey:@"walking"];
          }
      }];
