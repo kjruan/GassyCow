@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		20114C5D199C906C00416CBC /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 20114C5C199C906C00416CBC /* sprites.atlas */; };
-		204133A918E782F900D37F83 /* Cow2.png in Resources */ = {isa = PBXBuildFile; fileRef = 204133A818E782F900D37F83 /* Cow2.png */; };
 		2071D34418E27EA900B3C849 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34318E27EA900B3C849 /* Foundation.framework */; };
 		2071D34618E27EA900B3C849 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34518E27EA900B3C849 /* CoreGraphics.framework */; };
 		2071D34818E27EA900B3C849 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34718E27EA900B3C849 /* UIKit.framework */; };
@@ -26,19 +25,17 @@
 		2071D36C18E27EA900B3C849 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34718E27EA900B3C849 /* UIKit.framework */; };
 		2071D37418E27EA900B3C849 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2071D37218E27EA900B3C849 /* InfoPlist.strings */; };
 		2071D37618E27EA900B3C849 /* GassyCowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2071D37518E27EA900B3C849 /* GassyCowTests.m */; };
-		2071D38218E27FCE00B3C849 /* Level1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2071D38018E27FCE00B3C849 /* Level1.png */; };
-		2071D38318E27FCE00B3C849 /* TestCow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2071D38118E27FCE00B3C849 /* TestCow.png */; };
 		2071D38918E293E800B3C849 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D38818E293E800B3C849 /* CoreMotion.framework */; };
 		207CCDA81908BE5800E5F67E /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 207CCD9F1908BE5800E5F67E /* SKAction+SKTExtras.m */; };
 		207CCDA91908BE5800E5F67E /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA11908BE5800E5F67E /* SKEmitterNode+SKTExtras.m */; };
 		207CCDAA1908BE5800E5F67E /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA31908BE5800E5F67E /* SKNode+SKTExtras.m */; };
 		207CCDAB1908BE5800E5F67E /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA51908BE5800E5F67E /* SKTAudio.m */; };
 		207CCDAC1908BE5800E5F67E /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA71908BE5800E5F67E /* SKTUtils.mm */; };
+		20A75523199DCD73001BA5DC /* DebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A75522199DCD73001BA5DC /* DebugDraw.m */; };
 		20C20D0C1927B6C60076F163 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20C20D0B1927B6C60076F163 /* level1.plist */; };
 		20C80D351995DB3700862E85 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D341995DB3700862E85 /* Entity.m */; };
 		20C80D3B1995DC2100862E85 /* Cow.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3A1995DC2100862E85 /* Cow.m */; };
 		20C80D3E1995DC3F00862E85 /* Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3D1995DC3F00862E85 /* Blocks.m */; };
-		20DCC2E618E3EAF600DFFEB3 /* Cow.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DCC2E518E3EAF600DFFEB3 /* Cow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +50,6 @@
 
 /* Begin PBXFileReference section */
 		20114C5C199C906C00416CBC /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
-		204133A818E782F900D37F83 /* Cow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cow2.png; sourceTree = "<group>"; };
 		2071D34018E27EA900B3C849 /* GassyCow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GassyCow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2071D34318E27EA900B3C849 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2071D34518E27EA900B3C849 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -77,8 +73,6 @@
 		2071D37118E27EA900B3C849 /* GassyCowTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GassyCowTests-Info.plist"; sourceTree = "<group>"; };
 		2071D37318E27EA900B3C849 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2071D37518E27EA900B3C849 /* GassyCowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GassyCowTests.m; sourceTree = "<group>"; };
-		2071D38018E27FCE00B3C849 /* Level1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Level1.png; sourceTree = "<group>"; };
-		2071D38118E27FCE00B3C849 /* TestCow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TestCow.png; sourceTree = "<group>"; };
 		2071D38818E293E800B3C849 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		207CCD9E1908BE5800E5F67E /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
 		207CCD9F1908BE5800E5F67E /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
@@ -90,6 +84,8 @@
 		207CCDA51908BE5800E5F67E /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
 		207CCDA61908BE5800E5F67E /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
 		207CCDA71908BE5800E5F67E /* SKTUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SKTUtils.mm; sourceTree = "<group>"; };
+		20A75521199DCD73001BA5DC /* DebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDraw.h; sourceTree = "<group>"; };
+		20A75522199DCD73001BA5DC /* DebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugDraw.m; sourceTree = "<group>"; };
 		20C20D0B1927B6C60076F163 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
 		20C80D331995DB3700862E85 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		20C80D341995DB3700862E85 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
@@ -97,7 +93,6 @@
 		20C80D3A1995DC2100862E85 /* Cow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cow.m; sourceTree = "<group>"; };
 		20C80D3C1995DC3F00862E85 /* Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blocks.h; sourceTree = "<group>"; };
 		20C80D3D1995DC3F00862E85 /* Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Blocks.m; sourceTree = "<group>"; };
-		20DCC2E518E3EAF600DFFEB3 /* Cow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +169,8 @@
 				2071D36018E27EA900B3C849 /* Spaceship.png */,
 				2071D36218E27EA900B3C849 /* Images.xcassets */,
 				2071D34C18E27EA900B3C849 /* Supporting Files */,
+				20A75521199DCD73001BA5DC /* DebugDraw.h */,
+				20A75522199DCD73001BA5DC /* DebugDraw.m */,
 			);
 			path = GassyCow;
 			sourceTree = "<group>";
@@ -212,10 +209,6 @@
 			children = (
 				20114C5C199C906C00416CBC /* sprites.atlas */,
 				20C20D0A1927B6990076F163 /* Levels */,
-				20DCC2E518E3EAF600DFFEB3 /* Cow.png */,
-				204133A818E782F900D37F83 /* Cow2.png */,
-				2071D38018E27FCE00B3C849 /* Level1.png */,
-				2071D38118E27FCE00B3C849 /* TestCow.png */,
 			);
 			path = Art;
 			sourceTree = "<group>";
@@ -341,13 +334,9 @@
 				20114C5D199C906C00416CBC /* sprites.atlas in Resources */,
 				2071D35018E27EA900B3C849 /* InfoPlist.strings in Resources */,
 				2071D36318E27EA900B3C849 /* Images.xcassets in Resources */,
-				20DCC2E618E3EAF600DFFEB3 /* Cow.png in Resources */,
 				20C20D0C1927B6C60076F163 /* level1.plist in Resources */,
 				2071D36118E27EA900B3C849 /* Spaceship.png in Resources */,
-				2071D38318E27FCE00B3C849 /* TestCow.png in Resources */,
 				2071D35918E27EA900B3C849 /* Main.storyboard in Resources */,
-				204133A918E782F900D37F83 /* Cow2.png in Resources */,
-				2071D38218E27FCE00B3C849 /* Level1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +367,7 @@
 				2071D35618E27EA900B3C849 /* dmkAppDelegate.m in Sources */,
 				207CCDAA1908BE5800E5F67E /* SKNode+SKTExtras.m in Sources */,
 				2071D35F18E27EA900B3C849 /* dmkMyScene.m in Sources */,
+				20A75523199DCD73001BA5DC /* DebugDraw.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
 
 @interface Cow : Entity
 
--(SKAction *)walking;
+-(SKAction *)walk;
 -(void)fly;
 
 @end
