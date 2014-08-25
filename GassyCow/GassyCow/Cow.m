@@ -14,7 +14,6 @@
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
     static SKTexture *texture = nil;
     static dispatch_once_t onceToken;
-    
     dispatch_once(&onceToken, ^{
         SKSpriteNode *cow = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"Cow1"]];
         SKView *textureView = [SKView new];
@@ -34,6 +33,8 @@
 -(SKAction *)walk {
     // Walking animation
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
+    SKTexture *cowIdel = [atlas textureNamed:@"Cow2"];    
+    
     NSMutableArray *textures = [NSMutableArray arrayWithCapacity:6];
     for (int i = 1; i < 2; i++) {
         NSString *textureName = [NSString stringWithFormat:@"Cow%d", i];
@@ -47,24 +48,37 @@
         [textures addObject:texture];
     }
     
-    SKAction *_cowAnimation = [SKAction animateWithTextures:textures timePerFrame:0.1];
-    [self runAction:[SKAction repeatActionForever:_cowAnimation] withKey:@"walkingAnimation"];
+    // All parameters hardcoded. The idea is to randomize all the options in the future
+    SKAction *stopAnimation = [SKAction runBlock:^{
+        [SKAction setTexture:cowIdel];
+        [self removeActionForKey:@"walkingAnimation"];
+    }];
     
-    // All parameters hardcoded. The idea is to randomize all the options
-    SKAction *wait = [SKAction waitForDuration:1];
-    SKAction *wonderLeft = [SKAction sequence:@[[SKAction scaleXTo:self.xScale * -1 duration:0],[SKAction moveByX:15 y:0 duration:2]]];
-    SKAction *wonderRight = [SKAction sequence:@[[SKAction scaleXTo:self.xScale duration:0],[SKAction moveByX:-15 y:0 duration:1]]];
+    SKAction *wait = [SKAction sequence:@[stopAnimation, [SKAction waitForDuration:1.0]]];
+    SKAction *wonderLeft = [SKAction sequence:@[[SKAction scaleXTo:self.xScale * -1 duration:0], [SKAction runBlock:^{
+        [self startAnimation:textures];
+    }] ,[SKAction moveByX:15 y:0 duration:2]]];
+    SKAction *wonderRight = [SKAction sequence:@[[SKAction scaleXTo:self.xScale duration:0], [SKAction runBlock:^{
+        [self startAnimation:textures];
+    }]  ,[SKAction moveByX:-15 y:0 duration:1]]];
     SKAction *actionGroup = [SKAction sequence:@[wonderLeft, wait, wonderRight]];
     return actionGroup;
 }
 
-    
+-(void)startAnimation:(NSMutableArray *)textures
+{
+    SKAction *startAnimation = [SKAction animateWithTextures:textures timePerFrame:0.1];
+    [self runAction:[SKAction repeatActionForever:startAnimation] withKey:@"walkingAnimation"];
+}
+
 
 -(void)fly {
-    // Flying means taking off gravity. 
+    // Flying means taking off gravity.
     self.physicsBody.affectedByGravity = NO;
     [[self physicsBody] applyForce:CGVectorMake(0.0, 1.2) atPoint:CGPointMake(0.0, 0.0)];
+    
 }
+
 
 -(void)update:(CFTimeInterval)delta {
     

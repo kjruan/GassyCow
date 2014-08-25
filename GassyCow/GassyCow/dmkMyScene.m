@@ -76,7 +76,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 {
     Cow *_cow = [[Cow alloc] initWithPosition:pos];
     _cow.texture = [Cow generateTexture];
-    //SKSpriteNode *cow = [SKSpriteNode spriteNodeWithImageNamed:@"Cow2"];
+
     _cow.name = @"cow";
     _cow.position = pos;
     
@@ -88,6 +88,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     _cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
     _cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
     _cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge; //| CNPhysicsCategoryCowPen
+    
+    // Add debug square
     [_cow attachDebugRectWithSize:_cow.size];
     
     // Walk and lift off!! Still super spinny...
@@ -105,7 +107,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     // Load the plist file
     NSString *fileName = [NSString stringWithFormat:@"level%i", levelNum];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-    
     NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:filePath];
     [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"])];
 }
@@ -129,8 +130,28 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              NSLog(@"x: %f, y: %f, z: %f", cowPos.x, cowPos.y, cowRotation);
              //[body applyImpulse:CGVectorMake(0, 0.5) atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
              [cow removeActionForKey:@"walking"];
+             //body.affectedByGravity = false;
+             cow.physicsBody.allowsRotation = NO;
+             [body applyForce:[self travelVector:cowRotation] atPoint:CGPointMake(0.0, 0.0)];
+             [self travelVector:cowRotation];
          }
-     }];
+    }];
+}
+
+// Test travel vector... needs to implement in the cow class, testing here. 
+-(CGVector)travelVector:(CGFloat)zRotation
+{
+    // Depending on direction of the launch... 180 spin = PI, additional spin > 180 = NEG PI.
+    // When cow launches facing left, PI < 0 as the cow spins clockwise.
+    CGVector v = CGVectorMake(0, 0);
+    if (zRotation < 0 && zRotation > M_PI / 2 * -1) {
+        v = CGVectorMake(-10, -10);
+    } else
+        v = CGVectorMake(10, 10);
+    NSLog(@"Vector dx: %f, dy: %f", v.dx, v.dy);
+    NSLog(@"M_PI value: %f", M_PI);
+    
+    return v;
 }
 
 
@@ -143,11 +164,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     }
     _lastUpdateTime = currentTime;
     */
-    
-    NSInteger ti = (NSInteger)currentTime;
-    NSInteger seconds = ti % 60;
-    NSInteger minutes = (ti / 60) % 60;
-    NSInteger hours = (ti / 3600);
+    //NSLog(@"%@", [_gameNode children]);
     
 }
 
