@@ -4,5 +4,7 @@
 <dict>
 	<key>cowPosition</key>
 	<string>{100,70}</string>
+	<key>cowCount</key>
+	<integer>3</integer>
 </dict>
 </plist>

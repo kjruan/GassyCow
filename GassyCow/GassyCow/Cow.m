@@ -22,10 +22,19 @@
     return texture;
 }
 
--(instancetype)initWithPosition:(CGPoint)position
+-(SKNode *)initWithPosition:(CGPoint)position
 {
     if (self = [super initWithPosition:position]) {
-        self.name = @"cowSprite";
+        self.name = @"cow";
+        
+        self.texture = [Cow generateTexture];
+        
+        self.position = position;
+        
+        CGSize contactSize = CGSizeMake(self.size.width/2, self.size.height/2);
+        
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
+        
     }
     return self;
 }
@@ -81,7 +90,7 @@
 
 
 -(void)update:(CFTimeInterval)delta {
-    
+
 }
 
 

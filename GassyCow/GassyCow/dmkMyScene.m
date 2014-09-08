@@ -39,6 +39,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 }
 @synthesize motionManager;
 
+
 - (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -50,6 +51,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         // Setup level
         _currentLevel = 1;
         [self SetupLevel:_currentLevel];
+        
     }
     return self;
 }
@@ -66,6 +68,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     self.physicsBody.collisionBitMask = CNPhysicsCategoryEdge;
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryLabel;
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"Level1"];
+    
     bg.position = CGPointMake(self.size.width/2, self.size.height/2);
     bg.size = CGSizeMake(self.size.width, self.size.height);
     bg.anchorPoint = CGPointMake(0.5, 0.5);
@@ -73,32 +76,38 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 }
 
 - (void)spawnCowAtLocation:(CGPoint)pos
+                          :(int)count
 {
-    Cow *_cow = [[Cow alloc] initWithPosition:pos];
-    _cow.texture = [Cow generateTexture];
-
-    _cow.name = @"cow";
-    _cow.position = pos;
+    NSMutableArray *cows = [[NSMutableArray alloc] initWithCapacity:50];
+    for (int i = 0; i < count; i++ )
+    {
+        CGPoint modpos = CGPointMake(pos.x + ScalarRandomRange(0.0, 80.0), pos.y + ScalarRandomRange(0.0, 1.0));
+        
+        Cow *_cow = [[Cow alloc] initWithPosition:modpos];
+  
+        _cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
+        _cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
+        _cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge; //| CNPhysicsCategoryCowPen
+        
+        // Add debug square
+        [_cow attachDebugRectWithSize:_cow.size];
+        
+        NSLog(@"x: %f, y: %f", modpos.x, modpos.y);
+        
+        [cows addObject:_cow];
+    }
     
-    [_gameNode addChild:_cow];
+    for (int i = 0; i < cows.count; i++)
+    {
+        [_gameNode addChild:[cows objectAtIndex:i]];
+        [[cows objectAtIndex:i] runAction:[[cows objectAtIndex:i] walk] completion:^
+            {
+                [[cows objectAtIndex:i] fly];
+            }
+        ];
+    }
     
-    CGSize contactSize = CGSizeMake(_cow.size.width/2, _cow.size.height/2);
-    
-    _cow.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
-    _cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
-    _cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge;
-    _cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge; //| CNPhysicsCategoryCowPen
-    
-    // Add debug square
-    [_cow attachDebugRectWithSize:_cow.size];
-    
-    // Walk and lift off!! Still super spinny...
-    [_cow runAction:[_cow walk] completion:^{
-        [_cow removeActionForKey:@"walkingAnimation"];
-        [_cow fly];
-    }];
 }
-
 
 - (void)SetupLevel:(int)levelNum
 {
@@ -108,7 +117,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     NSString *fileName = [NSString stringWithFormat:@"level%i", levelNum];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
     NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:filePath];
-    [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"])];
+    [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):(int)[[level objectForKey:@"cowCount"] integerValue]];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -132,8 +141,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              [cow removeActionForKey:@"walking"];
              //body.affectedByGravity = false;
              cow.physicsBody.allowsRotation = NO;
+             cow.physicsBody.angularDamping = 0.02;
              [body applyForce:[self travelVector:cowRotation] atPoint:CGPointMake(0.0, 0.0)];
-             [self travelVector:cowRotation];
          }
     }];
 }
@@ -144,10 +153,14 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     // Depending on direction of the launch... 180 spin = PI, additional spin > 180 = NEG PI.
     // When cow launches facing left, PI < 0 as the cow spins clockwise.
     CGVector v = CGVectorMake(0, 0);
-    if (zRotation < 0 && zRotation > M_PI / 2 * -1) {
+    if (zRotation > 0 && zRotation < M_PI / 2)
         v = CGVectorMake(-10, -10);
-    } else
+    else if (zRotation > M_PI / 2 && zRotation < M_PI)
+        v = CGVectorMake(10, -10);
+    else if (zRotation > -M_PI && zRotation < -M_PI / 2)
         v = CGVectorMake(10, 10);
+    else
+        v = CGVectorMake(-10, 10);
     NSLog(@"Vector dx: %f, dy: %f", v.dx, v.dy);
     NSLog(@"M_PI value: %f", M_PI);
     
@@ -164,7 +177,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     }
     _lastUpdateTime = currentTime;
     */
-    //NSLog(@"%@", [_gameNode children]);
+    
+    NSLog(@"%@", _gameNode.children);
     
 }
 
