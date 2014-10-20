@@ -10,29 +10,29 @@
 	<string>GassyCow</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CEA54CF9-7761-4130-B785-96AAF8DE6390</key>
+		<key>1E6C81F705F50F666A7FA302DFC92B5522CFFF9A</key>
 		<string>https://github.com/kjruan/GassyCow.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>GassyCow/GassyCow.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CEA54CF9-7761-4130-B785-96AAF8DE6390</key>
+		<key>1E6C81F705F50F666A7FA302DFC92B5522CFFF9A</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/kjruan/GassyCow.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CEA54CF9-7761-4130-B785-96AAF8DE6390</string>
+	<string>1E6C81F705F50F666A7FA302DFC92B5522CFFF9A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CEA54CF9-7761-4130-B785-96AAF8DE6390</string>
+			<string>1E6C81F705F50F666A7FA302DFC92B5522CFFF9A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>GassyCow</string>
 		</dict>

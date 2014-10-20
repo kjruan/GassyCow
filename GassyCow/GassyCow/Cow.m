@@ -8,7 +8,9 @@
 
 #import "Cow.h"
 
-@implementation Cow
+@implementation Cow {
+    BOOL isFlying;
+}
 
 +(SKTexture *)generateTexture {
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
@@ -26,15 +28,10 @@
 {
     if (self = [super initWithPosition:position]) {
         self.name = @"cow";
-        
         self.texture = [Cow generateTexture];
-        
         self.position = position;
-        
         CGSize contactSize = CGSizeMake(self.size.width/2, self.size.height/2);
-        
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
-        
     }
     return self;
 }
@@ -85,7 +82,7 @@
     // Flying means taking off gravity.
     self.physicsBody.affectedByGravity = NO;
     [[self physicsBody] applyForce:CGVectorMake(0.0, 1.2) atPoint:CGPointMake(0.0, 0.0)];
-    
+    isFlying = YES;
 }
 
 
