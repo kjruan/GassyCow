@@ -35,6 +35,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     SKNode *_bgLayer;
     SKNode *_gameNode;
     SKNode *_hudLayer;
+    SKNode *_cowLayer;
     SKNode *_penLayer;
     SKNode *_penCowLayer;
     SKLabelNode *_scoreLabel;
@@ -64,8 +65,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         _penLayer = [SKNode node]; // Add pen layer to hold returned cows.
         [_gameNode addChild:_penLayer];
         
-        _penCowLayer = [SKNode node];
-        [_penLayer addChild:_penCowLayer];
+        _cowLayer = [SKNode node];
+        [_gameNode addChild:_cowLayer];
         
         /* Setup your scene here */
         [self initializeWithScene];
@@ -73,7 +74,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         // Setup level
         _currentLevel = 1;
         [self SetupLevel:_currentLevel];
-        
     }
     return self;
 }
@@ -82,9 +82,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 {
 
     // Setup main screen attributes
-    CGRect customRect = CGRectMake(0, 50, self.frame.size.width, self.frame.size.height - 50);
+    //CGRect customRect = CGRectMake(0, 50, self.frame.size.width, self.frame.size.height - 50);
     
-    self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:customRect];
+    self.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, 50) toPoint:CGPointMake(self.frame.size.width, 50)]; // bodyWithEdgeLoopFromRect:customRect];
     self.physicsWorld.contactDelegate = self;
     self.physicsWorld.gravity = CGVectorMake(0.0, -9.8);
     self.physicsBody.collisionBitMask = CNPhysicsCategoryEdge;
@@ -98,30 +98,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     bg.anchorPoint = CGPointMake(0.5, 0.5);
     [_bgLayer addChild:bg];
     
-    //Setup basic hud
-    _score = 0;
-    _scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
-    _scoreLabel.text = @"Score: 0";
-    _scoreLabel.fontSize = 20.0;
-    _scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-    _scoreLabel.position = CGPointMake(10, self.scene.size.height - 40);
-    [_hudLayer addChild:_scoreLabel];
-    
-    //Setup pen
-    SKSpriteNode *pen = [SKSpriteNode spriteNodeWithImageNamed:@"Base"];
-    pen.name = @"pen";
-    pen.position = CGPointMake(pen.size.width * 3/2, 70.0);
-    pen.size = CGSizeMake(pen.size.width/2, pen.size.height/2);
-    pen.anchorPoint = CGPointMake(0.5, 0.5);
-    
-    pen.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pen.size];
-    pen.physicsBody.categoryBitMask = CNPhysicsCategoryBase;
-    pen.physicsBody.collisionBitMask = CNPhysicsCategoryCow;
-    pen.physicsBody.contactTestBitMask = CNPhysicsCategoryCow;
-    [_penLayer addChild:pen];
-    
     //Debug
-    NSLog(@"x: %f, y: %f, parent %@", pen.position.x, pen.position.y, [pen parent]);
+    //NSLog(@"x: %f, y: %f, parent %@", pen.position.x, pen.position.y, [pen parent]);
 }
 
 - (void)spawnCowAtLocation:(CGPoint)pos
@@ -148,13 +126,32 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     for (int i = 0; i < cows.count; i++)
     {
-        [_gameNode addChild:[cows objectAtIndex:i]];
+        [_cowLayer addChild:[cows objectAtIndex:i]];
         [[cows objectAtIndex:i] runAction:[[cows objectAtIndex:i] walk] completion:^
             {
                 [[cows objectAtIndex:i] fly];
             }
         ];
     }
+}
+
+- (void)spawnPenAtLocation:(CGPoint)pos
+{
+    _penCowLayer = [SKNode node];
+    [_penLayer addChild:_penCowLayer];
+    
+    SKSpriteNode *pen = [SKSpriteNode spriteNodeWithImageNamed:@"Base"];
+    pen.name = @"pen";
+    pen.position = pos;
+    pen.size = CGSizeMake(pen.size.width/2, pen.size.height/2);
+    pen.anchorPoint = CGPointMake(0.5, 0.5);
+    
+    pen.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pen.size];
+    pen.physicsBody.categoryBitMask = CNPhysicsCategoryBase;
+    pen.physicsBody.collisionBitMask = CNPhysicsCategoryCow;
+    pen.physicsBody.contactTestBitMask = CNPhysicsCategoryCow;
+    [_penLayer addChild:pen];
+
 }
 
 - (void)SetupLevel:(int)levelNum
@@ -166,7 +163,20 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
     NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:filePath];
     _cowNumber = (int)[[level objectForKey:@"cowCount"] integerValue];
+    
+    // Reset Score
+    //Setup basic hud
+    _score = 0;
+    _scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
+    _scoreLabel.text = @"Score: 0";
+    _scoreLabel.fontSize = 20.0;
+    _scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    _scoreLabel.position = CGPointMake(10, self.scene.size.height - 40);
+    [_hudLayer addChild:_scoreLabel];
+    
     [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):(int)[[level objectForKey:@"cowCount"] integerValue]];
+    [self spawnPenAtLocation:CGPointFromString(level[@"penPosition"])];
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -183,16 +193,20 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              SKSpriteNode *cow = (SKSpriteNode *)body.node;
              
              cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge | CNPhysicsCategoryBase;
-             CGPoint cowPos = body.node.position;
+             //CGPoint cowPos = body.node.position;
              CGFloat cowRotation = body.node.zRotation;
 
-             NSLog(@"x: %f, y: %f, z: %f", cowPos.x, cowPos.y, cowRotation);
+             //NSLog(@"x: %f, y: %f, z: %f", cowPos.x, cowPos.y, cowRotation);
              //[body applyImpulse:CGVectorMake(0, 0.5) atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
              [cow removeActionForKey:@"walking"];
              //body.affectedByGravity = false;
              cow.physicsBody.allowsRotation = NO;
              cow.physicsBody.angularDamping = 0.0001;
              [body applyForce:[self travelVector:cowRotation] atPoint:CGPointMake(0.0, 0.0)];
+             
+             if (_cowNumber == 0) {
+                 [self win];
+             }
          }
     }];
 }
@@ -211,9 +225,19 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 {
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (CNPhysicsCategoryCow|CNPhysicsCategoryBase)) {
-        [contact.bodyB.node removeFromParent];
+        if (contact.bodyA.categoryBitMask == CNPhysicsCategoryCow)
+        {
+            [contact.bodyA.node removeFromParent];
+        } else {
+            [contact.bodyB.node removeFromParent];
+        }
         [self setCowInPen];
         _score += 1;
+        _cowNumber -= 1;
+    }
+    
+    if (_cowNumber == 0) {
+        [self win];
     }
 }
 
@@ -232,10 +256,24 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         v = CGVectorMake(10, 10);
     else
         v = CGVectorMake(-10, 10);
-    NSLog(@"Vector dx: %f, dy: %f", v.dx, v.dy);
-    NSLog(@"M_PI value: %f", M_PI);
+    //NSLog(@"Vector dx: %f, dy: %f", v.dx, v.dy);
+    //NSLog(@"M_PI value: %f", M_PI);
     
     return v;
+}
+
+
+
+-(void)win {
+    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:5.0],
+                                         [SKAction performSelector:@selector(newGame) onTarget:self]]]];
+}
+
+-(void)newGame {
+    [_hudLayer removeAllChildren];
+    [_cowLayer removeAllChildren];
+    [_penLayer removeAllChildren];
+    [self SetupLevel:1];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -245,7 +283,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         _dt = 0;
     }
     _lastUpdateTime = currentTime;
-    _scoreLabel.text = [NSString stringWithFormat:@"Score: %d", _score];
+    _scoreLabel.text = [NSString stringWithFormat:@"Score: %d, Cows: %d", _score, _cowNumber];
     
 }
 

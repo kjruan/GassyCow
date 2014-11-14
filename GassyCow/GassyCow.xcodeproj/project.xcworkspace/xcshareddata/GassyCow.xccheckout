@@ -14,7 +14,7 @@
 		<string>https://github.com/kjruan/GassyCow.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GassyCow/GassyCow.xcodeproj/project.xcworkspace</string>
+	<string>GassyCow/GassyCow.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1E6C81F705F50F666A7FA302DFC92B5522CFFF9A</key>

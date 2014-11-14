@@ -32,6 +32,14 @@
         self.position = position;
         CGSize contactSize = CGSizeMake(self.size.width/2, self.size.height/2);
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
+        
+        SKEmitterNode *fartEmitter =
+        [NSKeyedUnarchiver unarchiveObjectWithFile:
+         [[NSBundle mainBundle] pathForResource:@"fart"
+                                         ofType:@"sks"]];
+        fartEmitter.position = CGPointMake(1, -4);
+        fartEmitter.name = @"fartEmitter";
+        [self addChild:fartEmitter];
     }
     return self;
 }

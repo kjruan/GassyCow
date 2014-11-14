@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		20114C5D199C906C00416CBC /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 20114C5C199C906C00416CBC /* sprites.atlas */; };
+		2011C24A1A147207001FC6D5 /* fart.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2481A147207001FC6D5 /* fart.sks */; };
+		2011C24B1A147207001FC6D5 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2491A147207001FC6D5 /* spark.png */; };
 		2071D34418E27EA900B3C849 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34318E27EA900B3C849 /* Foundation.framework */; };
 		2071D34618E27EA900B3C849 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34518E27EA900B3C849 /* CoreGraphics.framework */; };
 		2071D34818E27EA900B3C849 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34718E27EA900B3C849 /* UIKit.framework */; };
@@ -33,6 +35,8 @@
 		207CCDAC1908BE5800E5F67E /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA71908BE5800E5F67E /* SKTUtils.mm */; };
 		20A75523199DCD73001BA5DC /* DebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A75522199DCD73001BA5DC /* DebugDraw.m */; };
 		20C20D0C1927B6C60076F163 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20C20D0B1927B6C60076F163 /* level1.plist */; };
+		20C2A77819F4BC3600FA2B4E /* FartParticleSystem.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */; };
+		20C2A77919F4BC3600FA2B4E /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77719F4BC3600FA2B4E /* smoke.png */; };
 		20C80D351995DB3700862E85 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D341995DB3700862E85 /* Entity.m */; };
 		20C80D3B1995DC2100862E85 /* Cow.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3A1995DC2100862E85 /* Cow.m */; };
 		20C80D3E1995DC3F00862E85 /* Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3D1995DC3F00862E85 /* Blocks.m */; };
@@ -50,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		20114C5C199C906C00416CBC /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		2011C2481A147207001FC6D5 /* fart.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fart.sks; sourceTree = "<group>"; };
+		2011C2491A147207001FC6D5 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		2071D34018E27EA900B3C849 /* GassyCow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GassyCow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2071D34318E27EA900B3C849 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2071D34518E27EA900B3C849 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +93,8 @@
 		20A75521199DCD73001BA5DC /* DebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDraw.h; sourceTree = "<group>"; };
 		20A75522199DCD73001BA5DC /* DebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugDraw.m; sourceTree = "<group>"; };
 		20C20D0B1927B6C60076F163 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
+		20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = FartParticleSystem.scnp; sourceTree = "<group>"; };
+		20C2A77719F4BC3600FA2B4E /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
 		20C80D331995DB3700862E85 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		20C80D341995DB3700862E85 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
 		20C80D391995DC2100862E85 /* Cow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cow.h; sourceTree = "<group>"; };
@@ -121,6 +129,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2011C2471A1471BF001FC6D5 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */,
+				2011C2491A147207001FC6D5 /* spark.png */,
+				2011C2481A147207001FC6D5 /* fart.sks */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
 		2071D33718E27EA900B3C849 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +174,7 @@
 		2071D34B18E27EA900B3C849 /* GassyCow */ = {
 			isa = PBXGroup;
 			children = (
+				2011C2471A1471BF001FC6D5 /* Particles */,
 				20C80D321995DAE800862E85 /* Entities */,
 				207CCD9D1908BE5800E5F67E /* SKTUtils */,
 				2071D37F18E27FCE00B3C849 /* Art */,
@@ -166,6 +185,7 @@
 				2071D35B18E27EA900B3C849 /* dmkViewController.m */,
 				2071D35D18E27EA900B3C849 /* dmkMyScene.h */,
 				2071D35E18E27EA900B3C849 /* dmkMyScene.m */,
+				20C2A77719F4BC3600FA2B4E /* smoke.png */,
 				2071D36018E27EA900B3C849 /* Spaceship.png */,
 				2071D36218E27EA900B3C849 /* Images.xcassets */,
 				2071D34C18E27EA900B3C849 /* Supporting Files */,
@@ -333,9 +353,13 @@
 			files = (
 				20114C5D199C906C00416CBC /* sprites.atlas in Resources */,
 				2071D35018E27EA900B3C849 /* InfoPlist.strings in Resources */,
+				2011C24A1A147207001FC6D5 /* fart.sks in Resources */,
 				2071D36318E27EA900B3C849 /* Images.xcassets in Resources */,
+				20C2A77919F4BC3600FA2B4E /* smoke.png in Resources */,
+				2011C24B1A147207001FC6D5 /* spark.png in Resources */,
 				20C20D0C1927B6C60076F163 /* level1.plist in Resources */,
 				2071D36118E27EA900B3C849 /* Spaceship.png in Resources */,
+				20C2A77819F4BC3600FA2B4E /* FartParticleSystem.scnp in Resources */,
 				2071D35918E27EA900B3C849 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
