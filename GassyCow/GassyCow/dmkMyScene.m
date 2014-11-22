@@ -9,6 +9,7 @@
 #import "dmkMyScene.h"
 #import "DebugDraw.h"
 #import "Cow.h"
+#import "SKTUtils.h"
 
 #define ARC4RANDOM_MAX  0x100000000
 
@@ -93,9 +94,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     //Setup background
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"Level_1"];
-    bg.position = CGPointMake(self.size.width/2, self.size.height/2);
-    bg.size = CGSizeMake(self.size.width, self.size.height);
-    bg.anchorPoint = CGPointMake(0.5, 0.5);
+    bg.position = CGPointMake(self.size.width , self.size.height );
+    bg.size = CGSizeMake(self.size.width * 2, self.size.height * 2);
+    bg.anchorPoint = CGPointMake(0.5, 0.6);
     [_bgLayer addChild:bg];
     
     //Debug
@@ -185,7 +186,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
-    
+
+
     // removes walking animation when cow is touched
     [self.physicsWorld enumerateBodiesAtPoint:location usingBlock:
      ^(SKPhysicsBody *body, BOOL *stop) {
@@ -203,6 +205,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              cow.physicsBody.allowsRotation = NO;
              cow.physicsBody.angularDamping = 0.0001;
              [body applyForce:[self travelVector:cowRotation] atPoint:CGPointMake(0.0, 0.0)];
+             
              
              if (_cowNumber == 0) {
                  [self win];
@@ -276,6 +279,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [self SetupLevel:1];
 }
 
+
 -(void)update:(CFTimeInterval)currentTime {
     if (_lastUpdateTime) {
         _dt = currentTime - _lastUpdateTime;
@@ -284,6 +288,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     }
     _lastUpdateTime = currentTime;
     _scoreLabel.text = [NSString stringWithFormat:@"Score: %d, Cows: %d", _score, _cowNumber];
+ 
+    //NSLog(@"%f, %f", [_cowLayer.children[0] position].x, [_cowLayer.children[0] position].y);
     
 }
 
