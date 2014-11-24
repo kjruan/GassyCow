@@ -34,6 +34,7 @@
 		207CCDAB1908BE5800E5F67E /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA51908BE5800E5F67E /* SKTAudio.m */; };
 		207CCDAC1908BE5800E5F67E /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA71908BE5800E5F67E /* SKTUtils.mm */; };
 		20A75523199DCD73001BA5DC /* DebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A75522199DCD73001BA5DC /* DebugDraw.m */; };
+		20AE63D01A22F55800B5FE17 /* dmkMainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AE63CF1A22F55800B5FE17 /* dmkMainMenuScene.m */; };
 		20C20D0C1927B6C60076F163 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20C20D0B1927B6C60076F163 /* level1.plist */; };
 		20C2A77819F4BC3600FA2B4E /* FartParticleSystem.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */; };
 		20C2A77919F4BC3600FA2B4E /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77719F4BC3600FA2B4E /* smoke.png */; };
@@ -92,6 +93,8 @@
 		207CCDA71908BE5800E5F67E /* SKTUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SKTUtils.mm; sourceTree = "<group>"; };
 		20A75521199DCD73001BA5DC /* DebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDraw.h; sourceTree = "<group>"; };
 		20A75522199DCD73001BA5DC /* DebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugDraw.m; sourceTree = "<group>"; };
+		20AE63CE1A22F55800B5FE17 /* dmkMainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dmkMainMenuScene.h; sourceTree = "<group>"; };
+		20AE63CF1A22F55800B5FE17 /* dmkMainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dmkMainMenuScene.m; sourceTree = "<group>"; };
 		20C20D0B1927B6C60076F163 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
 		20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = FartParticleSystem.scnp; sourceTree = "<group>"; };
 		20C2A77719F4BC3600FA2B4E /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 				2071D34C18E27EA900B3C849 /* Supporting Files */,
 				20A75521199DCD73001BA5DC /* DebugDraw.h */,
 				20A75522199DCD73001BA5DC /* DebugDraw.m */,
+				20AE63CE1A22F55800B5FE17 /* dmkMainMenuScene.h */,
+				20AE63CF1A22F55800B5FE17 /* dmkMainMenuScene.m */,
 			);
 			path = GassyCow;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				2071D35C18E27EA900B3C849 /* dmkViewController.m in Sources */,
 				207CCDAB1908BE5800E5F67E /* SKTAudio.m in Sources */,
 				2071D35218E27EA900B3C849 /* main.m in Sources */,
+				20AE63D01A22F55800B5FE17 /* dmkMainMenuScene.m in Sources */,
 				20C80D3E1995DC3F00862E85 /* Blocks.m in Sources */,
 				207CCDA91908BE5800E5F67E /* SKEmitterNode+SKTExtras.m in Sources */,
 				207CCDAC1908BE5800E5F67E /* SKTUtils.mm in Sources */,

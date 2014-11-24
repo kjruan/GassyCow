@@ -40,6 +40,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     SKNode *_penLayer;
     SKNode *_penCowLayer;
     SKLabelNode *_scoreLabel;
+    SKLabelNode *_resetLabel;
     
     SKAction *_cowAnimation;
     int _currentLevel;
@@ -120,7 +121,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         // Add debug square
         //[_cow attachDebugRectWithSize:_cow.size];
         
-        NSLog(@"x: %f, y: %f", modpos.x, modpos.y);
+        //NSLog(@"x: %f, y: %f", modpos.x, modpos.y);
         
         [cows addObject:_cow];
     }
@@ -175,6 +176,13 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     _scoreLabel.position = CGPointMake(10, self.scene.size.height - 40);
     [_hudLayer addChild:_scoreLabel];
     
+    _resetLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
+    _resetLabel.text = @"Reset";
+    _resetLabel.fontSize = 10.0;
+    _resetLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+    _resetLabel.position = CGPointMake(self.scene.size.width - 40, self.scene.size.height - 40);
+    [_hudLayer addChild:_resetLabel];
+    
     [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):(int)[[level objectForKey:@"cowCount"] integerValue]];
     [self spawnPenAtLocation:CGPointFromString(level[@"penPosition"])];
     
@@ -186,7 +194,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
-
 
     // removes walking animation when cow is touched
     [self.physicsWorld enumerateBodiesAtPoint:location usingBlock:
@@ -205,11 +212,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              cow.physicsBody.allowsRotation = NO;
              cow.physicsBody.angularDamping = 0.0001;
              [body applyForce:[self travelVector:cowRotation] atPoint:CGPointMake(0.0, 0.0)];
-             
-             
-             if (_cowNumber == 0) {
-                 [self win];
-             }
          }
     }];
 }
@@ -266,7 +268,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 }
 
 
-
 -(void)win {
     [self runAction:[SKAction sequence:@[[SKAction waitForDuration:5.0],
                                          [SKAction performSelector:@selector(newGame) onTarget:self]]]];
@@ -279,6 +280,18 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [self SetupLevel:1];
 }
 
+-(void)boundsCheckCows {
+    [_cowLayer enumerateChildNodesWithName:@"cow"
+                                usingBlock:^(SKNode *node, BOOL *stop) {
+                                    if ([node.name isEqualToString:@"cow"]) {
+                                        if (node.position.x < 0.0 - 10 || node.position.x > self.size.width + 10 || node.position.y > self.size.height + 10) {
+                                            [node removeFromParent];
+                                            _cowNumber -= 1;
+                                        }
+                                    }
+                                }];
+}
+
 
 -(void)update:(CFTimeInterval)currentTime {
     if (_lastUpdateTime) {
@@ -286,11 +299,14 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     } else {
         _dt = 0;
     }
+
     _lastUpdateTime = currentTime;
     _scoreLabel.text = [NSString stringWithFormat:@"Score: %d, Cows: %d", _score, _cowNumber];
  
+    [self boundsCheckCows];
     //NSLog(@"%f, %f", [_cowLayer.children[0] position].x, [_cowLayer.children[0] position].y);
-    
+    //NSLog(@"%f, %f", self.size.width, self.size.height);
+
 }
 
 @end

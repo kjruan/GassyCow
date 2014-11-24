@@ -8,6 +8,7 @@
 
 #import "dmkViewController.h"
 #import "dmkMyScene.h"
+#import "dmkMainMenuScene.h"
 
 @implementation dmkViewController
 
@@ -21,7 +22,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene *scene = [dmkMyScene sceneWithSize:skView.bounds.size];
+    SKScene *scene = [dmkMainMenuScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
