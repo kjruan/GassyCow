@@ -37,7 +37,7 @@
         [NSKeyedUnarchiver unarchiveObjectWithFile:
          [[NSBundle mainBundle] pathForResource:@"fart"
                                          ofType:@"sks"]];
-        fartEmitter.position = CGPointMake(1, -4);
+        fartEmitter.position = CGPointMake(15, -4);
         fartEmitter.name = @"fartEmitter";
         [self addChild:fartEmitter];
     }

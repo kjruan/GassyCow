@@ -20,6 +20,7 @@ typedef NS_OPTIONS(uint32_t, CNPhysicsCategory)
     CNPhysicsCategoryEdge = 1 << 3,     // 1000 = 8
     CNPhysicsCategoryLabel = 1 << 4,    // 10000 = 16
     CNPhysicsCategoryBase = 1 << 5,     // 100000 = 32
+    CNPhysicsCategoryBounds = 1 << 6,    // 1000000 = 64
 };
 
 static inline CGFloat ScalarRandomRange(CGFloat min,
@@ -33,6 +34,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
 @implementation dmkMyScene
 {
+    SKNode *_boundLayer;
     SKNode *_bgLayer;
     SKNode *_gameNode;
     SKNode *_hudLayer;
@@ -55,6 +57,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
 - (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+        _boundLayer = [SKNode node];
+        [self addChild:_boundLayer];
+        
         _bgLayer = [SKNode node];
         [self addChild:_bgLayer];
         
@@ -90,8 +95,19 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     self.physicsWorld.contactDelegate = self;
     self.physicsWorld.gravity = CGVectorMake(0.0, -9.8);
     self.physicsBody.collisionBitMask = CNPhysicsCategoryEdge;
-    self.physicsBody.contactTestBitMask = CNPhysicsCategoryLabel | CNPhysicsCategoryBase;
+    self.physicsBody.contactTestBitMask = CNPhysicsCategoryBase;
     self.name = @"self";
+    
+    // Setup boundaries
+    CGRect customRect = CGRectMake(-50, 0, self.size.width + 100, self.size.height + 20);
+    SKShapeNode *bounds = [SKShapeNode shapeNodeWithRect:customRect];
+    SKPhysicsBody *boundsPhysics = [SKPhysicsBody bodyWithEdgeLoopFromRect:customRect];
+    boundsPhysics.categoryBitMask = CNPhysicsCategoryBounds;
+    boundsPhysics.contactTestBitMask = CNPhysicsCategoryCow;
+    bounds.physicsBody = boundsPhysics;
+    [_boundLayer addChild:bounds];
+    
+    NSLog(@"%f, %f", bounds.frame.size.width, bounds.frame.size.height);
     
     //Setup background
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"Level_1"];
@@ -176,12 +192,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     _scoreLabel.position = CGPointMake(10, self.scene.size.height - 40);
     [_hudLayer addChild:_scoreLabel];
     
-    _resetLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
-    _resetLabel.text = @"Reset";
-    _resetLabel.fontSize = 10.0;
-    _resetLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
-    _resetLabel.position = CGPointMake(self.scene.size.width - 40, self.scene.size.height - 40);
-    [_hudLayer addChild:_resetLabel];
     
     [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):(int)[[level objectForKey:@"cowCount"] integerValue]];
     [self spawnPenAtLocation:CGPointFromString(level[@"penPosition"])];
@@ -216,7 +226,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     }];
 }
 
--(void)setCowInPen
+- (void)setCowInPen
 {
     SKSpriteNode *cow = [SKSpriteNode spriteNodeWithImageNamed:@"Cow1"];
     CGFloat cowPostionX = ScalarRandomRange(1, 20);
@@ -226,7 +236,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [_penCowLayer addChild:cow];
 }
 
--(void)didBeginContact:(SKPhysicsContact *)contact
+- (void)didBeginContact:(SKPhysicsContact *)contact
 {
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (CNPhysicsCategoryCow|CNPhysicsCategoryBase)) {
@@ -241,6 +251,17 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         _cowNumber -= 1;
     }
     
+    if (collision == (CNPhysicsCategoryCow|CNPhysicsCategoryBounds)) {
+        if (contact.bodyA.categoryBitMask == CNPhysicsCategoryCow)
+        {
+            [contact.bodyA.node removeFromParent];
+        } else {
+            [contact.bodyB.node removeFromParent];
+        }
+        _cowNumber -= 1;
+    }
+    
+    
     if (_cowNumber == 0) {
         [self win];
     }
@@ -248,7 +269,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
 
 // Test travel vector... needs to implement in the cow class, testing here. 
--(CGVector)travelVector:(CGFloat)zRotation
+- (CGVector)travelVector:(CGFloat)zRotation
 {
     // Depending on direction of the launch... 180 spin = PI, additional spin > 180 = NEG PI.
     // When cow launches facing left, PI < 0 as the cow spins clockwise.
@@ -268,32 +289,20 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 }
 
 
--(void)win {
+- (void)win {
     [self runAction:[SKAction sequence:@[[SKAction waitForDuration:5.0],
                                          [SKAction performSelector:@selector(newGame) onTarget:self]]]];
 }
 
--(void)newGame {
+- (void)newGame {
     [_hudLayer removeAllChildren];
     [_cowLayer removeAllChildren];
     [_penLayer removeAllChildren];
     [self SetupLevel:1];
 }
 
--(void)boundsCheckCows {
-    [_cowLayer enumerateChildNodesWithName:@"cow"
-                                usingBlock:^(SKNode *node, BOOL *stop) {
-                                    if ([node.name isEqualToString:@"cow"]) {
-                                        if (node.position.x < 0.0 - 10 || node.position.x > self.size.width + 10 || node.position.y > self.size.height + 10) {
-                                            [node removeFromParent];
-                                            _cowNumber -= 1;
-                                        }
-                                    }
-                                }];
-}
 
-
--(void)update:(CFTimeInterval)currentTime {
+- (void)update:(CFTimeInterval)currentTime {
     if (_lastUpdateTime) {
         _dt = currentTime - _lastUpdateTime;
     } else {
@@ -303,7 +312,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     _lastUpdateTime = currentTime;
     _scoreLabel.text = [NSString stringWithFormat:@"Score: %d, Cows: %d", _score, _cowNumber];
  
-    [self boundsCheckCows];
     //NSLog(@"%f, %f", [_cowLayer.children[0] position].x, [_cowLayer.children[0] position].y);
     //NSLog(@"%f, %f", self.size.width, self.size.height);
 
