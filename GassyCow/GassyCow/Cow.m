@@ -10,6 +10,7 @@
 
 @implementation Cow {
     BOOL isFlying;
+    CGFloat _facing;
 }
 
 +(SKTexture *)generateTexture {
@@ -25,6 +26,7 @@
 }
 
 -(SKNode *)initWithPosition:(CGPoint)position
+                     facing:(CGFloat)facing
 {
     if (self = [super initWithPosition:position]) {
         self.name = @"cow";
@@ -33,21 +35,24 @@
         CGSize contactSize = CGSizeMake(self.size.width/2, self.size.height/2);
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
         
+        isFlying = NO;
+        
         SKEmitterNode *fartEmitter =
         [NSKeyedUnarchiver unarchiveObjectWithFile:
          [[NSBundle mainBundle] pathForResource:@"fart"
                                          ofType:@"sks"]];
-        fartEmitter.position = CGPointMake(15, -4);
+        fartEmitter.position = CGPointMake(20, -4);
         fartEmitter.name = @"fartEmitter";
         [self addChild:fartEmitter];
     }
     return self;
 }
 
+
 -(SKAction *)walk {
     // Walking animation
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
-    SKTexture *cowIdel = [atlas textureNamed:@"Cow2"];    
+    SKTexture *cowIdel = [atlas textureNamed:@"Cow1"];
     
     NSMutableArray *textures = [NSMutableArray arrayWithCapacity:6];
     for (int i = 1; i < 2; i++) {
@@ -68,14 +73,14 @@
         [self removeActionForKey:@"walkingAnimation"];
     }];
     
-    SKAction *wait = [SKAction sequence:@[stopAnimation, [SKAction waitForDuration:1.0]]];
+    SKAction *wait = [SKAction sequence:@[stopAnimation, [SKAction setTexture:cowIdel],[SKAction waitForDuration:1.0]]];
     SKAction *wonderLeft = [SKAction sequence:@[[SKAction scaleXTo:self.xScale * -1 duration:0], [SKAction runBlock:^{
         [self startAnimation:textures];
     }] ,[SKAction moveByX:15 y:0 duration:2]]];
     SKAction *wonderRight = [SKAction sequence:@[[SKAction scaleXTo:self.xScale duration:0], [SKAction runBlock:^{
         [self startAnimation:textures];
     }]  ,[SKAction moveByX:-15 y:0 duration:1]]];
-    SKAction *actionGroup = [SKAction sequence:@[wonderLeft, wait, wonderRight]];
+    SKAction *actionGroup = [SKAction repeatAction:[SKAction sequence:@[wonderLeft, wait, wonderRight, wait]] count:1];
     return actionGroup;
 }
 
@@ -90,7 +95,8 @@
 -(void)fly {
     // Flying means taking off gravity.
     self.physicsBody.affectedByGravity = NO;
-    [[self physicsBody] applyForce:CGVectorMake(0.0, 1.2) atPoint:CGPointMake(0.0, 0.0)];
+    [[self physicsBody] applyImpulse:CGVectorMake(0.0, 1.2) atPoint:CGPointMake(self.position.x - 5.0,self.position.y)];
+    self.physicsBody.allowsRotation = NO;
     isFlying = YES;
 }
 

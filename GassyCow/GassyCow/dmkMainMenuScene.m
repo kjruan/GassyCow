@@ -54,7 +54,7 @@
     
     if ([node.name isEqualToString:@"startBtn"]) {
     
-        dmkMyScene * myScene =
+        dmkMyScene *myScene =
         [[dmkMyScene alloc] initWithSize:self.size];
     
         SKTransition *reveal =

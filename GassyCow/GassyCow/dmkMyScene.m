@@ -99,8 +99,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     self.name = @"self";
     
     // Setup boundaries
-    CGRect customRect = CGRectMake(-50, 0, self.size.width + 100, self.size.height + 20);
-    SKShapeNode *bounds = [SKShapeNode shapeNodeWithRect:customRect];
+    CGRect customRect = CGRectMake(-50, 0, self.size.width + 100, self.size.height + 50);
+    SKNode *bounds = [SKNode node];
     SKPhysicsBody *boundsPhysics = [SKPhysicsBody bodyWithEdgeLoopFromRect:customRect];
     boundsPhysics.categoryBitMask = CNPhysicsCategoryBounds;
     boundsPhysics.contactTestBitMask = CNPhysicsCategoryCow;
@@ -127,9 +127,10 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     for (int i = 0; i < count; i++ )
     {
         CGPoint modpos = CGPointMake(pos.x + ScalarRandomRange(0.0, 80.0), pos.y + ScalarRandomRange(0.0, 1.0));
-
-        Cow *_cow = [[Cow alloc] initWithPosition:modpos];
-  
+        CGFloat facing = 1.0;
+        
+        Cow *_cow = [[Cow alloc] initWithPosition:modpos facing:facing];
+        
         _cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
         _cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge | CNPhysicsCategoryBase;
         _cow.physicsBody.contactTestBitMask = CNPhysicsCategoryEdge | CNPhysicsCategoryBase;
@@ -204,12 +205,12 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
-
+    
     // removes walking animation when cow is touched
     [self.physicsWorld enumerateBodiesAtPoint:location usingBlock:
      ^(SKPhysicsBody *body, BOOL *stop) {
          if (body.categoryBitMask == CNPhysicsCategoryCow) {
-             SKSpriteNode *cow = (SKSpriteNode *)body.node;
+             Cow *cow = (Cow *)body.node;
              
              cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge | CNPhysicsCategoryBase;
              //CGPoint cowPos = body.node.position;
@@ -217,11 +218,11 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
              //NSLog(@"x: %f, y: %f, z: %f", cowPos.x, cowPos.y, cowRotation);
              //[body applyImpulse:CGVectorMake(0, 0.5) atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
-             [cow removeActionForKey:@"walking"];
+             //[cow removeActionForKey:@"walking"];
              //body.affectedByGravity = false;
-             cow.physicsBody.allowsRotation = NO;
-             cow.physicsBody.angularDamping = 0.0001;
-             [body applyForce:[self travelVector:cowRotation] atPoint:CGPointMake(0.0, 0.0)];
+             //cow.physicsBody.allowsRotation = NO;
+             cow.physicsBody.angularDamping = 0.1;
+             [body applyForce:[self travelVector:cowRotation] atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
          }
     }];
 }

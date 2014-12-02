@@ -10,6 +10,8 @@
 
 @interface Cow : Entity
 
+-(SKNode *)initWithPosition:(CGPoint)position
+                     facing:(CGFloat)facing;
 -(SKAction *)walk;
 -(void)fly;
 
