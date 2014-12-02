@@ -8,6 +8,7 @@
 
 #import "dmkMainMenuScene.h"
 #import "dmkMyScene.h"
+#import "dmkCreditScene.h"
 
 @implementation dmkMainMenuScene
 {
@@ -28,10 +29,17 @@
         SKLabelNode *startBtn = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
         startBtn.name = @"startBtn";
         startBtn.fontColor = [UIColor whiteColor];
-        startBtn.position = CGPointMake(self.size.width/2, self.size.height/2);
+        startBtn.position = CGPointMake(self.size.width/2, self.size.height/2 + 50);
         startBtn.text = @"Start";
         
+        SKLabelNode *creditBtn = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
+        creditBtn.name = @"creditBtn";
+        creditBtn.fontColor = [UIColor whiteColor];
+        creditBtn.position = CGPointMake(self.size.width/2, self.size.height/4);
+        creditBtn.text = @"Credits";
+        
         [_btnLayer addChild:startBtn];
+        [_btnLayer addChild:creditBtn];
 
     }
     return self;
@@ -53,6 +61,17 @@
         [SKTransition doorwayWithDuration:0.5];
     
     
+        [self.view presentScene:myScene transition: reveal];
+    }
+    
+    if ([node.name isEqualToString:@"creditBtn"]) {
+        dmkCreditScene *myScene =
+        [[dmkCreditScene alloc] initWithSize:self.size];
+        
+        SKTransition *reveal =
+        [SKTransition doorwayWithDuration:0.5];
+        
+        
         [self.view presentScene:myScene transition: reveal];
     }
 }

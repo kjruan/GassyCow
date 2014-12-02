@@ -10,6 +10,7 @@
 		20114C5D199C906C00416CBC /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 20114C5C199C906C00416CBC /* sprites.atlas */; };
 		2011C24A1A147207001FC6D5 /* fart.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2481A147207001FC6D5 /* fart.sks */; };
 		2011C24B1A147207001FC6D5 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2491A147207001FC6D5 /* spark.png */; };
+		203D5CB31A28E89D0055E78F /* dmkCreditScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D5CB21A28E89D0055E78F /* dmkCreditScene.m */; };
 		2071D34418E27EA900B3C849 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34318E27EA900B3C849 /* Foundation.framework */; };
 		2071D34618E27EA900B3C849 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34518E27EA900B3C849 /* CoreGraphics.framework */; };
 		2071D34818E27EA900B3C849 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34718E27EA900B3C849 /* UIKit.framework */; };
@@ -57,6 +58,8 @@
 		20114C5C199C906C00416CBC /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		2011C2481A147207001FC6D5 /* fart.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fart.sks; sourceTree = "<group>"; };
 		2011C2491A147207001FC6D5 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		203D5CB11A28E89D0055E78F /* dmkCreditScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dmkCreditScene.h; sourceTree = "<group>"; };
+		203D5CB21A28E89D0055E78F /* dmkCreditScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dmkCreditScene.m; sourceTree = "<group>"; };
 		2071D34018E27EA900B3C849 /* GassyCow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GassyCow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2071D34318E27EA900B3C849 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2071D34518E27EA900B3C849 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -196,6 +199,8 @@
 				20A75522199DCD73001BA5DC /* DebugDraw.m */,
 				20AE63CE1A22F55800B5FE17 /* dmkMainMenuScene.h */,
 				20AE63CF1A22F55800B5FE17 /* dmkMainMenuScene.m */,
+				203D5CB11A28E89D0055E78F /* dmkCreditScene.h */,
+				203D5CB21A28E89D0055E78F /* dmkCreditScene.m */,
 			);
 			path = GassyCow;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 				2071D35218E27EA900B3C849 /* main.m in Sources */,
 				20AE63D01A22F55800B5FE17 /* dmkMainMenuScene.m in Sources */,
 				20C80D3E1995DC3F00862E85 /* Blocks.m in Sources */,
+				203D5CB31A28E89D0055E78F /* dmkCreditScene.m in Sources */,
 				207CCDA91908BE5800E5F67E /* SKEmitterNode+SKTExtras.m in Sources */,
 				207CCDAC1908BE5800E5F67E /* SKTUtils.mm in Sources */,
 				207CCDA81908BE5800E5F67E /* SKAction+SKTExtras.m in Sources */,
