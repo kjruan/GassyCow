@@ -7,10 +7,21 @@
 //
 
 #import "Cow.h"
+#define ARC4RANDOM_MAX  0x100000000
 
 @implementation Cow {
     BOOL isFlying;
-    CGFloat _facing;
+    NSDictionary *_cowChar;
+    NSInteger _FaceMod;
+    NSInteger _LeftMod;
+    NSInteger _RightMod;
+    NSInteger _ChangeMod;
+}
+
+static inline CGFloat ScalarRandomRange(CGFloat min,
+                                        CGFloat max)
+{
+    return floorf(((double)arc4random() / ARC4RANDOM_MAX) * (max - min) + min);
 }
 
 +(SKTexture *)generateTexture {
@@ -37,13 +48,27 @@
         
         isFlying = NO;
         
-        SKEmitterNode *fartEmitter =
-        [NSKeyedUnarchiver unarchiveObjectWithFile:
-         [[NSBundle mainBundle] pathForResource:@"fart"
-                                         ofType:@"sks"]];
-        fartEmitter.position = CGPointMake(20, -4);
-        fartEmitter.name = @"fartEmitter";
-        [self addChild:fartEmitter];
+        _cowChar = [self cowCharacteristics];
+        
+        /*
+         Right face > 0
+         left facing mod = 1
+         walk left = negative = -1
+         walk right = positive = 1
+         */
+        if ([[_cowChar valueForKey:@"Facing"] integerValue] > 0) {
+            _FaceMod = -1; // Face Right
+            _LeftMod = 1;
+            _RightMod = -1;
+            _ChangeMod = 1;
+        } else {
+            _FaceMod = 1; // Face Left
+            _LeftMod = -1;
+            _RightMod = 1;
+            _ChangeMod = -1;
+        }
+
+        [self addChild:[self fartEmitter]];
     }
     return self;
 }
@@ -72,15 +97,29 @@
         [SKAction setTexture:cowIdel];
         [self removeActionForKey:@"walkingAnimation"];
     }];
+
     
-    SKAction *wait = [SKAction sequence:@[stopAnimation, [SKAction setTexture:cowIdel],[SKAction waitForDuration:1.0]]];
-    SKAction *wonderLeft = [SKAction sequence:@[[SKAction scaleXTo:self.xScale * -1 duration:0], [SKAction runBlock:^{
-        [self startAnimation:textures];
-    }] ,[SKAction moveByX:15 y:0 duration:2]]];
-    SKAction *wonderRight = [SKAction sequence:@[[SKAction scaleXTo:self.xScale duration:0], [SKAction runBlock:^{
-        [self startAnimation:textures];
-    }]  ,[SKAction moveByX:-15 y:0 duration:1]]];
-    SKAction *actionGroup = [SKAction repeatAction:[SKAction sequence:@[wonderLeft, wait, wonderRight, wait]] count:1];
+    SKAction *wait = [SKAction sequence:@[
+                                          stopAnimation,
+                                          [SKAction setTexture:cowIdel],
+                                          [SKAction waitForDuration:[[_cowChar valueForKey:@"WaitTime"] doubleValue]],
+                                          ]];
+    SKAction *wonderLeft = [SKAction sequence:@[
+                                                [SKAction scaleXTo:self.xScale * _FaceMod duration:0],
+                                                [SKAction runBlock:^{
+                                                    [self startAnimation:textures];
+                                                }],
+                                                [SKAction moveByX:[[_cowChar valueForKey:@"MoveLeft"] doubleValue] * _LeftMod y:0 duration:1]
+                                                ]];
+    SKAction *wonderRight = [SKAction sequence:@[
+                                                 [SKAction scaleXTo:self.xScale * _ChangeMod duration:0],
+                                                 [SKAction runBlock:^{
+                                                    [self startAnimation:textures];
+                                                }],
+                                                 [SKAction moveByX:[[_cowChar valueForKey:@"MoveRight"] doubleValue] * _RightMod y:0 duration:1]
+                                                ]];
+    
+    SKAction *actionGroup = [SKAction repeatAction:[SKAction sequence:@[wonderLeft, wait, wonderRight, wait]] count:[[_cowChar valueForKey:@"Repeats"] integerValue]];
     return actionGroup;
 }
 
@@ -90,6 +129,47 @@
     [self runAction:[SKAction repeatActionForever:startAnimation] withKey:@"walkingAnimation"];
 }
 
+-(NSDictionary *)cowCharacteristics
+{
+    /*
+    NSArray *characters = @[@"Facing", @"MoveLeft",@"MoveRight",@"WaitTime",@"Repeats"];
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < characters.count; i++) {
+        if (i == 0) {
+            [values addObject:[NSNumber numberWithInt:(int)ScalarRandomRange(1, 15) % 2]];
+        }
+        else
+        {
+            [values addObject:[NSNumber numberWithInt:ScalarRandomRange(1, 15)]];
+        }
+    }
+    */
+    
+    
+    NSDictionary *cowChar = [[NSDictionary alloc] init];
+
+    cowChar = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:(int)ScalarRandomRange(1, 15) % 2], @"Facing",
+                                                         [NSNumber numberWithDouble:(double)ScalarRandomRange(1, 15)], @"MoveLeft",
+                                                         [NSNumber numberWithDouble:(double)ScalarRandomRange(1, 15)], @"MoveRight",
+                                                         [NSNumber numberWithInt:(int)ScalarRandomRange(1, 3)], @"Repeats",
+                                                         [NSNumber numberWithDouble:(double)ScalarRandomRange(1, 8)], @"WaitTime", nil];
+    
+    
+    NSLog(@"%@", cowChar);
+    return cowChar;
+}
+
+-(SKEmitterNode *)fartEmitter
+{
+    SKEmitterNode *fartEmitter =
+    [NSKeyedUnarchiver unarchiveObjectWithFile:
+     [[NSBundle mainBundle] pathForResource:@"fart"
+                                     ofType:@"sks"]];
+    fartEmitter.position = CGPointMake(20, -4);
+    fartEmitter.name = @"fartEmitter";
+    return fartEmitter;
+}
 
 
 -(void)fly {
@@ -100,6 +180,24 @@
     isFlying = YES;
 }
 
+- (CGVector)travelVector:(CGFloat)zRotation
+{
+    // Depending on direction of the launch... 180 spin = PI, additional spin > 180 = NEG PI.
+    // When cow launches facing left, PI < 0 as the cow spins clockwise.
+    CGVector v = CGVectorMake(0, 0);
+    if (zRotation > 0 && zRotation < M_PI / 2)
+        v = CGVectorMake(-10, -10);
+    else if (zRotation > M_PI / 2 && zRotation < M_PI)
+        v = CGVectorMake(10, -10);
+    else if (zRotation > -M_PI && zRotation < -M_PI / 2)
+        v = CGVectorMake(10, 10);
+    else
+        v = CGVectorMake(-10, 10);
+    //NSLog(@"Vector dx: %f, dy: %f", v.dx, v.dy);
+    //NSLog(@"M_PI value: %f", M_PI);
+    
+    return v;
+}
 
 -(void)update:(CFTimeInterval)delta {
 
