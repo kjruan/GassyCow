@@ -109,15 +109,18 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     NSLog(@"%f, %f", bounds.frame.size.width, bounds.frame.size.height);
     
+    //Debug
+    //NSLog(@"x: %f, y: %f, parent %@", pen.position.x, pen.position.y, [pen parent]);
+}
+
+- (void)setBackgroundImage:(NSString *)bgName
+{
     //Setup background
-    SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"Level_1"];
+    SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:bgName];
     bg.position = CGPointMake(self.size.width , self.size.height );
     bg.size = CGSizeMake(self.size.width * 2, self.size.height * 2);
     bg.anchorPoint = CGPointMake(0.5, 0.6);
     [_bgLayer addChild:bg];
-    
-    //Debug
-    //NSLog(@"x: %f, y: %f, parent %@", pen.position.x, pen.position.y, [pen parent]);
 }
 
 - (void)spawnCowAtLocation:(CGPoint)pos
@@ -126,10 +129,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     NSMutableArray *cows = [[NSMutableArray alloc] initWithCapacity:50]; // Reserve 50 cow objects in array
     for (int i = 0; i < count; i++ )
     {
-        CGPoint modpos = CGPointMake(pos.x + ScalarRandomRange(0.0, 80.0), pos.y + ScalarRandomRange(0.0, 1.0));
-        CGFloat facing = 1.0;
+        CGPoint modpos = CGPointMake(pos.x + ScalarRandomRange(10.0, 200.0), pos.y + ScalarRandomRange(0.0, 1.0));
         
-        Cow *_cow = [[Cow alloc] initWithPosition:modpos facing:facing];
+        Cow *_cow = [[Cow alloc] initWithPosition:modpos];
         
         _cow.physicsBody.categoryBitMask = CNPhysicsCategoryCow;
         _cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge | CNPhysicsCategoryBase;
@@ -154,12 +156,13 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     }
 }
 
-- (void)spawnPenAtLocation:(CGPoint)pos
+- (void)spawnPenAtLocation:(NSString *)penImgName
+                       pos:(CGPoint)pos
 {
     _penCowLayer = [SKNode node];
     [_penLayer addChild:_penCowLayer];
     
-    SKSpriteNode *pen = [SKSpriteNode spriteNodeWithImageNamed:@"Base"];
+    SKSpriteNode *pen = [SKSpriteNode spriteNodeWithImageNamed:penImgName];
     pen.name = @"pen";
     pen.position = pos;
     pen.size = CGSizeMake(pen.size.width/2, pen.size.height/2);
@@ -170,7 +173,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     pen.physicsBody.collisionBitMask = CNPhysicsCategoryCow;
     pen.physicsBody.contactTestBitMask = CNPhysicsCategoryCow;
     [_penLayer addChild:pen];
-
 }
 
 - (void)SetupLevel:(int)levelNum
@@ -193,9 +195,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     _scoreLabel.position = CGPointMake(10, self.scene.size.height - 40);
     [_hudLayer addChild:_scoreLabel];
     
-    
+    [self setBackgroundImage:[level objectForKey:@"bgImgName"]];
     [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):(int)[[level objectForKey:@"cowCount"] integerValue]];
-    [self spawnPenAtLocation:CGPointFromString(level[@"penPosition"])];
+    [self spawnPenAtLocation:[level objectForKey:@"penImgName"] pos: CGPointFromString(level[@"penPosition"])];
     
 }
 
@@ -216,13 +218,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              //CGPoint cowPos = body.node.position;
              CGFloat cowRotation = body.node.zRotation;
 
-             //NSLog(@"x: %f, y: %f, z: %f", cowPos.x, cowPos.y, cowRotation);
-             //[body applyImpulse:CGVectorMake(0, 0.5) atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
-             //[cow removeActionForKey:@"walking"];
-             //body.affectedByGravity = false;
-             //cow.physicsBody.allowsRotation = NO;
              cow.physicsBody.angularDamping = 0.1;
-             [body applyForce:[self travelVector:cowRotation] atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
+             [cow startFartEmitter:cowRotation];
+             [body applyForce:[cow travelVector:cowRotation] atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
          }
     }];
 }

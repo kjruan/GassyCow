@@ -37,7 +37,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 }
 
 -(SKNode *)initWithPosition:(CGPoint)position
-                     facing:(CGFloat)facing
 {
     if (self = [super initWithPosition:position]) {
         self.name = @"cow";
@@ -68,7 +67,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
             _ChangeMod = -1;
         }
 
-        [self addChild:[self fartEmitter]];
+        //[self addChild:[self fartEmitter:[[_cowChar valueForKey:@"Facing"] integerValue]]];
     }
     return self;
 }
@@ -131,20 +130,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
 -(NSDictionary *)cowCharacteristics
 {
-    /*
-    NSArray *characters = @[@"Facing", @"MoveLeft",@"MoveRight",@"WaitTime",@"Repeats"];
-    NSMutableArray *values = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < characters.count; i++) {
-        if (i == 0) {
-            [values addObject:[NSNumber numberWithInt:(int)ScalarRandomRange(1, 15) % 2]];
-        }
-        else
-        {
-            [values addObject:[NSNumber numberWithInt:ScalarRandomRange(1, 15)]];
-        }
-    }
-    */
     
     
     NSDictionary *cowChar = [[NSDictionary alloc] init];
@@ -160,7 +145,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     return cowChar;
 }
 
--(SKEmitterNode *)fartEmitter
+-(void)startFartEmitter:(CGFloat)direction
 {
     SKEmitterNode *fartEmitter =
     [NSKeyedUnarchiver unarchiveObjectWithFile:
@@ -168,7 +153,10 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
                                      ofType:@"sks"]];
     fartEmitter.position = CGPointMake(20, -4);
     fartEmitter.name = @"fartEmitter";
-    return fartEmitter;
+    
+    fartEmitter.emissionAngle = direction;
+    
+    [self addChild:fartEmitter];
 }
 
 
@@ -180,19 +168,34 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     isFlying = YES;
 }
 
-- (CGVector)travelVector:(CGFloat)zRotation
+-(CGVector)travelVector:(CGFloat)zRotation
 {
     // Depending on direction of the launch... 180 spin = PI, additional spin > 180 = NEG PI.
     // When cow launches facing left, PI < 0 as the cow spins clockwise.
     CGVector v = CGVectorMake(0, 0);
-    if (zRotation > 0 && zRotation < M_PI / 2)
-        v = CGVectorMake(-10, -10);
-    else if (zRotation > M_PI / 2 && zRotation < M_PI)
-        v = CGVectorMake(10, -10);
-    else if (zRotation > -M_PI && zRotation < -M_PI / 2)
-        v = CGVectorMake(10, 10);
-    else
-        v = CGVectorMake(-10, 10);
+    
+    if (!isFlying)
+        v = CGVectorMake(0, 0);
+    else if (([[_cowChar valueForKey:@"Facing"] integerValue] > 0)) {
+        if (zRotation > 0 && zRotation < M_PI / 2)
+            v = CGVectorMake(-10, -10);
+        else if (zRotation > M_PI / 2 && zRotation < M_PI)
+            v = CGVectorMake(10, -10);
+        else if (zRotation > -M_PI && zRotation < -M_PI / 2)
+            v = CGVectorMake(10, 10);
+        else
+            v = CGVectorMake(-10, 10);
+    } else {
+        if (zRotation > 0 && zRotation < M_PI / 2)
+            v = CGVectorMake(10, 10);
+        else if (zRotation > M_PI / 2 && zRotation < M_PI)
+            v = CGVectorMake(-10, 10);
+        else if (zRotation > -M_PI && zRotation < -M_PI / 2)
+            v = CGVectorMake(-10, -10);
+        else
+            v = CGVectorMake(10, -10);
+    }
+
     //NSLog(@"Vector dx: %f, dy: %f", v.dx, v.dy);
     //NSLog(@"M_PI value: %f", M_PI);
     
