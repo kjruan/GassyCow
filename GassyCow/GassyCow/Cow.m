@@ -44,6 +44,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         self.position = position;
         CGSize contactSize = CGSizeMake(self.size.width/2, self.size.height/2);
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
+        self.physicsBody.density = 2;
         
         isFlying = NO;
         
@@ -66,7 +67,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
             _RightMod = 1;
             _ChangeMod = -1;
         }
-
+        
+        NSLog(@"%f", self.physicsBody.area);
         //[self addChild:[self fartEmitter:[[_cowChar valueForKey:@"Facing"] integerValue]]];
     }
     return self;
@@ -138,10 +140,10 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
                                                          [NSNumber numberWithDouble:(double)ScalarRandomRange(1, 15)], @"MoveLeft",
                                                          [NSNumber numberWithDouble:(double)ScalarRandomRange(1, 15)], @"MoveRight",
                                                          [NSNumber numberWithInt:(int)ScalarRandomRange(1, 3)], @"Repeats",
-                                                         [NSNumber numberWithDouble:(double)ScalarRandomRange(1, 8)], @"WaitTime", nil];
+                                                         [NSNumber numberWithDouble:(double)ScalarRandomRange(1, 4)], @"WaitTime", nil];
     
     
-    NSLog(@"%@", cowChar);
+    //NSLog(@"%@", cowChar);
     return cowChar;
 }
 
@@ -155,16 +157,17 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     fartEmitter.name = @"fartEmitter";
     
     fartEmitter.emissionAngle = direction;
-    
+    //NSLog(@"%f", fartEmitter.emissionAngle);
     [self addChild:fartEmitter];
 }
 
 
 -(void)fly {
     // Flying means taking off gravity.
+    CGFloat offset = ScalarRandomRange(5, 10);
     self.physicsBody.affectedByGravity = NO;
-    [[self physicsBody] applyImpulse:CGVectorMake(0.0, 1.2) atPoint:CGPointMake(self.position.x - 5.0,self.position.y)];
-    self.physicsBody.allowsRotation = NO;
+    [[self physicsBody] applyImpulse:CGVectorMake(0.0, 2.0) atPoint:CGPointMake(self.position.x - offset,self.position.y)];
+    //self.physicsBody.allowsRotation = NO; // causing crash
     isFlying = YES;
 }
 
@@ -173,27 +176,29 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     // Depending on direction of the launch... 180 spin = PI, additional spin > 180 = NEG PI.
     // When cow launches facing left, PI < 0 as the cow spins clockwise.
     CGVector v = CGVectorMake(0, 0);
+    CGFloat x = 50;
+    CGFloat y = 50;
     
     if (!isFlying)
         v = CGVectorMake(0, 0);
     else if (([[_cowChar valueForKey:@"Facing"] integerValue] > 0)) {
         if (zRotation > 0 && zRotation < M_PI / 2)
-            v = CGVectorMake(-10, -10);
+            v = CGVectorMake(-x, -y);
         else if (zRotation > M_PI / 2 && zRotation < M_PI)
-            v = CGVectorMake(10, -10);
+            v = CGVectorMake(x, -y);
         else if (zRotation > -M_PI && zRotation < -M_PI / 2)
-            v = CGVectorMake(10, 10);
+            v = CGVectorMake(x, y);
         else
-            v = CGVectorMake(-10, 10);
+            v = CGVectorMake(-x, y);
     } else {
         if (zRotation > 0 && zRotation < M_PI / 2)
-            v = CGVectorMake(10, 10);
+            v = CGVectorMake(x, y);
         else if (zRotation > M_PI / 2 && zRotation < M_PI)
-            v = CGVectorMake(-10, 10);
+            v = CGVectorMake(-x, y);
         else if (zRotation > -M_PI && zRotation < -M_PI / 2)
-            v = CGVectorMake(-10, -10);
+            v = CGVectorMake(-x, -y);
         else
-            v = CGVectorMake(10, -10);
+            v = CGVectorMake(x, -y);
     }
 
     //NSLog(@"Vector dx: %f, dy: %f", v.dx, v.dy);

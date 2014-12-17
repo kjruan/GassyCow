@@ -107,7 +107,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     bounds.physicsBody = boundsPhysics;
     [_boundLayer addChild:bounds];
     
-    NSLog(@"%f, %f", bounds.frame.size.width, bounds.frame.size.height);
+   // NSLog(@"%f, %f", bounds.frame.size.width, bounds.frame.size.height);
     
     //Debug
     //NSLog(@"x: %f, y: %f, parent %@", pen.position.x, pen.position.y, [pen parent]);
@@ -214,16 +214,20 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
          if (body.categoryBitMask == CNPhysicsCategoryCow) {
              Cow *cow = (Cow *)body.node;
              
-             cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge | CNPhysicsCategoryBase;
+             //cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge | CNPhysicsCategoryBase;
              //CGPoint cowPos = body.node.position;
              CGFloat cowRotation = body.node.zRotation;
 
-             cow.physicsBody.angularDamping = 0.1;
+             //cow.physicsBody.angularDamping = 1.0;
+             
+             NSLog(@"Touch");
              [cow startFartEmitter:cowRotation];
-             [body applyForce:[cow travelVector:cowRotation] atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
+             [body applyForce:[cow travelVector:cowRotation]]; // atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
          }
     }];
 }
+
+
 
 - (void)setCowInPen
 {
