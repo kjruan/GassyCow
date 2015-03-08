@@ -51,7 +51,7 @@
     SKLabelNode *credits = [SKLabelNode labelNodeWithFontNamed:font];
     credits.fontColor = color;
     credits.fontSize = size;
-    credits.text = @"Programmming: Kevin Ruan Graphics: David Geib";
+    credits.text = @"Programmming: Keviar Graphics: Chainsaw";
     return credits;
 }
 

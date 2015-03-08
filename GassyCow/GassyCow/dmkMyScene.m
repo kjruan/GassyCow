@@ -106,11 +106,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     boundsPhysics.contactTestBitMask = CNPhysicsCategoryCow;
     bounds.physicsBody = boundsPhysics;
     [_boundLayer addChild:bounds];
-    
-   // NSLog(@"%f, %f", bounds.frame.size.width, bounds.frame.size.height);
-    
-    //Debug
-    //NSLog(@"x: %f, y: %f, parent %@", pen.position.x, pen.position.y, [pen parent]);
 }
 
 - (void)setBackgroundImage:(NSString *)bgName
@@ -139,7 +134,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         
         // Add debug square
         //[_cow attachDebugRectWithSize:_cow.size];
-        
         //NSLog(@"x: %f, y: %f", modpos.x, modpos.y);
         
         [cows addObject:_cow];
@@ -198,7 +192,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [self setBackgroundImage:[level objectForKey:@"bgImgName"]];
     [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):(int)[[level objectForKey:@"cowCount"] integerValue]];
     [self spawnPenAtLocation:[level objectForKey:@"penImgName"] pos: CGPointFromString(level[@"penPosition"])];
-    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -214,19 +207,14 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
          if (body.categoryBitMask == CNPhysicsCategoryCow) {
              Cow *cow = (Cow *)body.node;
              
-             //cow.physicsBody.collisionBitMask = CNPhysicsCategoryCow | CNPhysicsCategoryEdge | CNPhysicsCategoryBase;
-             //CGPoint cowPos = body.node.position;
              CGFloat cowRotation = body.node.zRotation;
 
-             //cow.physicsBody.angularDamping = 1.0;
-             
              NSLog(@"Touch");
              [cow startFartEmitter:cowRotation];
              [body applyForce:[cow travelVector:cowRotation]]; // atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
          }
     }];
 }
-
 
 
 - (void)setCowInPen
@@ -264,33 +252,10 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         _cowNumber -= 1;
     }
     
-    
     if (_cowNumber == 0) {
         [self win];
     }
 }
-
-
-// Test travel vector... needs to implement in the cow class, testing here. 
-- (CGVector)travelVector:(CGFloat)zRotation
-{
-    // Depending on direction of the launch... 180 spin = PI, additional spin > 180 = NEG PI.
-    // When cow launches facing left, PI < 0 as the cow spins clockwise.
-    CGVector v = CGVectorMake(0, 0);
-    if (zRotation > 0 && zRotation < M_PI / 2)
-        v = CGVectorMake(-10, -10);
-    else if (zRotation > M_PI / 2 && zRotation < M_PI)
-        v = CGVectorMake(10, -10);
-    else if (zRotation > -M_PI && zRotation < -M_PI / 2)
-        v = CGVectorMake(10, 10);
-    else
-        v = CGVectorMake(-10, 10);
-    //NSLog(@"Vector dx: %f, dy: %f", v.dx, v.dy);
-    //NSLog(@"M_PI value: %f", M_PI);
-    
-    return v;
-}
-
 
 - (void)win {
     [self runAction:[SKAction sequence:@[[SKAction waitForDuration:5.0],
@@ -314,9 +279,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
     _lastUpdateTime = currentTime;
     _scoreLabel.text = [NSString stringWithFormat:@"Score: %d, Cows: %d", _score, _cowNumber];
- 
-    //NSLog(@"%f, %f", [_cowLayer.children[0] position].x, [_cowLayer.children[0] position].y);
-    //NSLog(@"%f, %f", self.size.width, self.size.height);
 
 }
 

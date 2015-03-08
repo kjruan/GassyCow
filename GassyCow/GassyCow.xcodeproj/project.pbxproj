@@ -10,6 +10,7 @@
 		20114C5D199C906C00416CBC /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 20114C5C199C906C00416CBC /* sprites.atlas */; };
 		2011C24A1A147207001FC6D5 /* fart.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2481A147207001FC6D5 /* fart.sks */; };
 		2011C24B1A147207001FC6D5 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2491A147207001FC6D5 /* spark.png */; };
+		2015B3281A452DA200CD7C99 /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2015B3271A452DA200CD7C99 /* level2.plist */; };
 		203D5CB31A28E89D0055E78F /* dmkCreditScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D5CB21A28E89D0055E78F /* dmkCreditScene.m */; };
 		2071D34418E27EA900B3C849 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34318E27EA900B3C849 /* Foundation.framework */; };
 		2071D34618E27EA900B3C849 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34518E27EA900B3C849 /* CoreGraphics.framework */; };
@@ -58,6 +59,7 @@
 		20114C5C199C906C00416CBC /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		2011C2481A147207001FC6D5 /* fart.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fart.sks; sourceTree = "<group>"; };
 		2011C2491A147207001FC6D5 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		2015B3271A452DA200CD7C99 /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
 		203D5CB11A28E89D0055E78F /* dmkCreditScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dmkCreditScene.h; sourceTree = "<group>"; };
 		203D5CB21A28E89D0055E78F /* dmkCreditScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dmkCreditScene.m; sourceTree = "<group>"; };
 		2071D34018E27EA900B3C849 /* GassyCow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GassyCow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				20C20D0B1927B6C60076F163 /* level1.plist */,
+				2015B3271A452DA200CD7C99 /* level2.plist */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				20C20D0C1927B6C60076F163 /* level1.plist in Resources */,
 				2071D36118E27EA900B3C849 /* Spaceship.png in Resources */,
 				20C2A77819F4BC3600FA2B4E /* FartParticleSystem.scnp in Resources */,
+				2015B3281A452DA200CD7C99 /* level2.plist in Resources */,
 				2071D35918E27EA900B3C849 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
