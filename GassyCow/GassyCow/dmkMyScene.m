@@ -91,7 +91,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     // Setup main screen attributes
     //CGRect customRect = CGRectMake(0, 50, self.frame.size.width, self.frame.size.height - 50);
     
-    self.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, 50) toPoint:CGPointMake(self.frame.size.width, 50)]; // bodyWithEdgeLoopFromRect:customRect];
+    self.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, 15) toPoint:CGPointMake(self.frame.size.width, 15)]; // bodyWithEdgeLoopFromRect:customRect];
     self.physicsWorld.contactDelegate = self;
     self.physicsWorld.gravity = CGVectorMake(0.0, -9.8);
     self.physicsBody.collisionBitMask = CNPhysicsCategoryEdge;
@@ -112,9 +112,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 {
     //Setup background
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:bgName];
-    bg.position = CGPointMake(self.size.width , self.size.height );
-    bg.size = CGSizeMake(self.size.width * 2, self.size.height * 2);
-    bg.anchorPoint = CGPointMake(0.5, 0.6);
+    bg.position = CGPointMake(self.size.width / 2 , self.size.height / 2 );
+    bg.size = CGSizeMake(self.size.width, self.size.height);
+    bg.anchorPoint = CGPointMake(0.5, 0.5);
     [_bgLayer addChild:bg];
 }
 
