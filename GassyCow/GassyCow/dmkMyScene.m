@@ -10,6 +10,8 @@
 #import "DebugDraw.h"
 #import "Cow.h"
 #import "SKTUtils.h"
+@import AVFoundation;
+
 
 #define ARC4RANDOM_MAX  0x100000000
 
@@ -51,6 +53,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     int _cowNumber;
     int _score;
+    
+    AVAudioPlayer *_backgroundMusicPlayer;
 }
 @synthesize motionManager;
 
@@ -106,6 +110,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     boundsPhysics.contactTestBitMask = CNPhysicsCategoryCow;
     bounds.physicsBody = boundsPhysics;
     [_boundLayer addChild:bounds];
+    
+    [self playBackgroundMusic:@"Theme1.mp3"];
+    
 }
 
 - (void)setBackgroundImage:(NSString *)bgName
@@ -208,8 +215,14 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              Cow *cow = (Cow *)body.node;
              
              CGFloat cowRotation = body.node.zRotation;
+             CGFloat fartSoundRand = ScalarRandomRange(1, 21);
+             
+             int integerWidth = (int) roundf(fartSoundRand);
 
-             NSLog(@"Touch");
+             [self runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"Fart%i.mp3", integerWidth] waitForCompletion:NO]];
+             
+             //NSString *test = [NSString stringWithFormat:@"Fart%i", integerWidth];
+             //NSLog(@"Touch with fart sound: %@", test);
              [cow startFartEmitter:cowRotation];
              [body applyForce:[cow travelVector:cowRotation]]; // atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
          }
@@ -267,6 +280,19 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [_cowLayer removeAllChildren];
     [_penLayer removeAllChildren];
     [self SetupLevel:1];
+}
+
+
+- (void)playBackgroundMusic:(NSString *)filename
+{
+    NSError *error;
+    
+    NSURL *backgroundMusicURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+    
+    _backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    _backgroundMusicPlayer.numberOfLoops = -1;
+    [_backgroundMusicPlayer prepareToPlay];
+    [_backgroundMusicPlayer play];
 }
 
 
