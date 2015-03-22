@@ -216,11 +216,12 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              
              CGFloat cowRotation = body.node.zRotation;
              CGFloat fartSoundRand = ScalarRandomRange(1, 21);
-             
-             int integerWidth = (int) roundf(fartSoundRand);
+             CGFloat mooSoundRand = ScalarRandomRange(1, 14);
+             int fart = (int) roundf(fartSoundRand);
+             int moo = (int) roundf(mooSoundRand);
 
-             [self runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"Fart%i.mp3", integerWidth] waitForCompletion:NO]];
-             
+             [self runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"Fart%i.mp3", fart] waitForCompletion:NO]];
+             [self runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"Moo%i.mp3", moo] waitForCompletion:NO]];
              //NSString *test = [NSString stringWithFormat:@"Fart%i", integerWidth];
              //NSLog(@"Touch with fart sound: %@", test);
              [cow startFartEmitter:cowRotation];

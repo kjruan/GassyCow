@@ -74,6 +74,7 @@
 		20BECCB41ABDE47400C5C90E /* Moo9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC901ABDE47400C5C90E /* Moo9.mp3 */; };
 		20BECCB51ABDE47400C5C90E /* Theme1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC911ABDE47400C5C90E /* Theme1.mp3 */; };
 		20BECCB71ABDE52F00C5C90E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BECCB61ABDE52F00C5C90E /* AVFoundation.framework */; };
+		20BECCBB1ABE8B1D00C5C90E /* Fart9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECCBA1ABE8B1D00C5C90E /* Fart9.mp3 */; };
 		20C20D0C1927B6C60076F163 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20C20D0B1927B6C60076F163 /* level1.plist */; };
 		20C2A77819F4BC3600FA2B4E /* FartParticleSystem.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */; };
 		20C2A77919F4BC3600FA2B4E /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77719F4BC3600FA2B4E /* smoke.png */; };
@@ -174,6 +175,7 @@
 		20BECC901ABDE47400C5C90E /* Moo9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Moo9.mp3; sourceTree = "<group>"; };
 		20BECC911ABDE47400C5C90E /* Theme1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Theme1.mp3; sourceTree = "<group>"; };
 		20BECCB61ABDE52F00C5C90E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		20BECCBA1ABE8B1D00C5C90E /* Fart9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart9.mp3; sourceTree = "<group>"; };
 		20C20D0B1927B6C60076F163 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
 		20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = FartParticleSystem.scnp; sourceTree = "<group>"; };
 		20C2A77719F4BC3600FA2B4E /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				20BECC731ABDE47400C5C90E /* Fart14.mp3 */,
 				20BECC741ABDE47400C5C90E /* Fart15.mp3 */,
 				20BECC751ABDE47400C5C90E /* Fart16.mp3 */,
+				20BECCBA1ABE8B1D00C5C90E /* Fart9.mp3 */,
 				20BECC761ABDE47400C5C90E /* Fart17.mp3 */,
 				20BECC771ABDE47400C5C90E /* Fart18.mp3 */,
 				20BECC781ABDE47400C5C90E /* Fart19.mp3 */,
@@ -498,6 +501,7 @@
 				20BECC921ABDE47400C5C90E /* Fart1.mp3 in Resources */,
 				20BECCA71ABDE47400C5C90E /* Moo1.mp3 in Resources */,
 				20BECC9D1ABDE47400C5C90E /* Fart2.mp3 in Resources */,
+				20BECCBB1ABE8B1D00C5C90E /* Fart9.mp3 in Resources */,
 				20BECCAA1ABDE47400C5C90E /* Moo12.mp3 in Resources */,
 				20BECCB01ABDE47400C5C90E /* Moo5.mp3 in Resources */,
 				20BECCAC1ABDE47400C5C90E /* Moo14.mp3 in Resources */,
