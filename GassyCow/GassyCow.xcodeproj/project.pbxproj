@@ -94,6 +94,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200A4F6D1ACBB7000038509B /* Pin.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pin.aif; sourceTree = "<group>"; };
 		20114C5C199C906C00416CBC /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		2011C2481A147207001FC6D5 /* fart.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fart.sks; sourceTree = "<group>"; };
 		2011C2491A147207001FC6D5 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -344,6 +345,7 @@
 		20BECC6D1ABDE47400C5C90E /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				200A4F6D1ACBB7000038509B /* Pin.aif */,
 				20BECC6E1ABDE47400C5C90E /* Fart1.mp3 */,
 				20BECC6F1ABDE47400C5C90E /* Fart10.mp3 */,
 				20BECC701ABDE47400C5C90E /* Fart11.mp3 */,
