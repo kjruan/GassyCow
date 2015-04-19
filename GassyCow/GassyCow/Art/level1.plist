@@ -9,7 +9,7 @@
 	<key>cowPosition</key>
 	<string>{80,70}</string>
 	<key>cowCount</key>
-	<integer>10</integer>
+	<integer>1</integer>
 	<key>penPosition</key>
 	<string>{400, 70}</string>
 </dict>

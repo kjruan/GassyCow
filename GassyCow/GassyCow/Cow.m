@@ -42,9 +42,13 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         self.name = @"cow";
         self.texture = [Cow generateTexture];
         self.position = position;
-        CGSize contactSize = CGSizeMake(self.size.width/2, self.size.height/2);
+        
+        // Reduce cow size
+        self.size = CGSizeMake(self.size.width * 0.75, self.size.height * 0.75);
+        
+        CGSize contactSize = CGSizeMake(self.size.width / 2, self.size.height / 2);
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:contactSize];
-        self.physicsBody.density = 2;
+        self.physicsBody.density = 3;
         
         isFlying = NO;
         
@@ -68,7 +72,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
             _ChangeMod = -1;
         }
         
-        NSLog(@"%f", self.physicsBody.area);
+        // NSLog(@"%f", self.physicsBody.area);
         //[self addChild:[self fartEmitter:[[_cowChar valueForKey:@"Facing"] integerValue]]];
     }
     return self;

@@ -53,6 +53,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     int _cowNumber;
     int _score;
+    int _lostCowCount;
     
     AVAudioPlayer *_backgroundMusicPlayer;
 }
@@ -178,17 +179,24 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
 - (void)SetupLevel:(int)levelNum
 {
-    // Add Background audio
-    
     // Load the plist file
     NSString *fileName = [NSString stringWithFormat:@"level%i", levelNum];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
     NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:filePath];
     _cowNumber = (int)[[level objectForKey:@"cowCount"] integerValue];
+    _lostCowCount = 0;
     
     // Reset Score
+    _resetLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
+    _resetLabel.name = @"Reset";
+    _resetLabel.text = @"Reset";
+    _resetLabel.fontSize = 20.0;
+    _resetLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    _resetLabel.position = CGPointMake(self.scene.size.width - 80, self.scene.size.height - 40);
+    [_hudLayer addChild:_resetLabel];
+    
     //Setup basic hud
-    _score = 0;
+    _score = [self getPlayerHighScore];
     _scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
     _scoreLabel.text = @"Score: 0";
     _scoreLabel.fontSize = 20.0;
@@ -207,6 +215,11 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
+    SKNode *reset = [self nodeAtPoint:location];
+    if ([reset.name isEqualToString:@"Reset"])
+    {
+        [self resetGame];
+    }
     
     // removes walking animation when cow is touched
     [self.physicsWorld enumerateBodiesAtPoint:location usingBlock:
@@ -228,18 +241,19 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     }];
 }
 
-
 - (void)setCowInPen
 {
     CGFloat mooSoundRand = ScalarRandomRange(1, 14);
     int moo = (int) roundf(mooSoundRand);
     [self runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"Moo%i.mp3", moo] waitForCompletion:NO]];
-    SKSpriteNode *cow = [SKSpriteNode spriteNodeWithImageNamed:@"Cow1"];
-    CGFloat cowPostionX = ScalarRandomRange(1, 30);
     //NSLog(@"%f",[_penLayer childNodeWithName:@"pen"].position.x);
     
-    cow.position = CGPointMake([_penLayer childNodeWithName:@"pen"].position.x + cowPostionX, [_penLayer childNodeWithName:@"pen"].position.y);
-    [_penCowLayer addChild:cow];
+    CGPoint modpos = CGPointMake([_penLayer childNodeWithName:@"pen"].position.x + ScalarRandomRange(1.0, 30.0), [_penLayer childNodeWithName:@"pen"].position.y);
+    
+    Cow *_cow = [[Cow alloc] initWithPosition:modpos];
+    _cow.physicsBody = nil;
+    
+    [_penCowLayer addChild:_cow];
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
@@ -254,6 +268,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         }
         [self setCowInPen];
         _score += 1;
+        [self setPlayerHighScore:[self getPlayerHighScore] + 1];
         _cowNumber -= 1;
     }
     
@@ -265,6 +280,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
             [contact.bodyB.node removeFromParent];
         }
         _cowNumber -= 1;
+        _lostCowCount += 1;
     }
     
     if (_cowNumber == 0) {
@@ -273,6 +289,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 }
 
 - (void)win {
+    if (_lostCowCount == 0)
+        [self setCowNumber:[self getCowNumber] + 1];
     [self runAction:[SKAction sequence:@[[SKAction waitForDuration:5.0],
                                          [SKAction performSelector:@selector(newGame) onTarget:self]]]];
 }
@@ -281,7 +299,10 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [_hudLayer removeAllChildren];
     [_cowLayer removeAllChildren];
     [_penLayer removeAllChildren];
-    [self SetupLevel:1];
+    //[_boundLayer removeAllChildren];
+    //[_bgLayer removeAllChildren];
+
+    [self SetupLevel:1]; // Only one level. Increases cow by one every game.
 }
 
 
@@ -297,6 +318,54 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [_backgroundMusicPlayer play];
 }
 
+- (void)setPlayerHighScore:(int)score
+{
+    NSString *fileName = @"highscore";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
+    NSMutableDictionary *s = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+    [s setValue:[NSNumber numberWithInt:score] forKey:@"score"];
+    if ([s writeToFile:filePath atomically:NO])
+    {
+        //NSLog(@"Success, path: %@", filePath);
+        //_score = (int)[[s objectForKey:@"score"] integerValue];
+    } else
+    {
+        NSLog(@"Write failed, path: %@", filePath);
+    }
+}
+
+- (int)getPlayerHighScore
+{
+    NSString *fileName = @"highscore";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
+    NSMutableDictionary *s = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+    return (int)[[s objectForKey:@"score"] integerValue];
+}
+
+
+- (void)setCowNumber:(int)count
+{
+    NSString *fileName = @"level1";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
+    NSMutableDictionary *level = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+    [level setValue:[NSNumber numberWithInt:count] forKey:@"cowCount"];
+    [level writeToFile:filePath atomically:NO];
+}
+
+- (int)getCowNumber
+{
+    NSString *fileName = @"level1";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
+    NSMutableDictionary *level = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+    return (int)[[level objectForKey:@"cowCount"] integerValue];
+}
+
+- (void)resetGame
+{
+    [self setPlayerHighScore:0];
+    [self setCowNumber:1];
+    [self runAction:[SKAction performSelector:@selector(newGame) onTarget:self]];
+}
 
 - (void)update:(CFTimeInterval)currentTime {
     if (_lastUpdateTime) {
@@ -306,7 +375,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     }
 
     _lastUpdateTime = currentTime;
-    _scoreLabel.text = [NSString stringWithFormat:@"Score: %d, Cows: %d", _score, _cowNumber];
+    _scoreLabel.text = [NSString stringWithFormat:@"Hi-Score: %d, Cows: %d", _score, _cowNumber];
 
 }
 
