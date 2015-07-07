@@ -19,8 +19,11 @@
 {
     if (self = [super initWithSize:size])
     {
-        SKSpriteNode *bg = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:size];
+        SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"TitleScreen"];
+        //SKSpriteNode *bg = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:size];
         bg.position = CGPointMake(self.size.width/2, self.size.height/2);
+        bg.size = CGSizeMake(self.size.width, self.size.height);
+        bg.anchorPoint = CGPointMake(0.5, 0.5);
         [self addChild:bg];
         
         _btnLayer = [SKNode node];

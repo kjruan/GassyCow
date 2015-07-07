@@ -39,6 +39,7 @@
 		207CCDAC1908BE5800E5F67E /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA71908BE5800E5F67E /* SKTUtils.mm */; };
 		20A75523199DCD73001BA5DC /* DebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A75522199DCD73001BA5DC /* DebugDraw.m */; };
 		20AE63D01A22F55800B5FE17 /* dmkMainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AE63CF1A22F55800B5FE17 /* dmkMainMenuScene.m */; };
+		20B4D04B1AEF78D6008B60A3 /* Cloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4D04A1AEF78D6008B60A3 /* Cloud.m */; };
 		20BECC921ABDE47400C5C90E /* Fart1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC6E1ABDE47400C5C90E /* Fart1.mp3 */; };
 		20BECC931ABDE47400C5C90E /* Fart10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC6F1ABDE47400C5C90E /* Fart10.mp3 */; };
 		20BECC941ABDE47400C5C90E /* Fart11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC701ABDE47400C5C90E /* Fart11.mp3 */; };
@@ -144,6 +145,8 @@
 		20A75522199DCD73001BA5DC /* DebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugDraw.m; sourceTree = "<group>"; };
 		20AE63CE1A22F55800B5FE17 /* dmkMainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dmkMainMenuScene.h; sourceTree = "<group>"; };
 		20AE63CF1A22F55800B5FE17 /* dmkMainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dmkMainMenuScene.m; sourceTree = "<group>"; };
+		20B4D0491AEF78D6008B60A3 /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
+		20B4D04A1AEF78D6008B60A3 /* Cloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cloud.m; sourceTree = "<group>"; };
 		20BECC6E1ABDE47400C5C90E /* Fart1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart1.mp3; sourceTree = "<group>"; };
 		20BECC6F1ABDE47400C5C90E /* Fart10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart10.mp3; sourceTree = "<group>"; };
 		20BECC701ABDE47400C5C90E /* Fart11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart11.mp3; sourceTree = "<group>"; };
@@ -414,6 +417,8 @@
 				20C80D3A1995DC2100862E85 /* Cow.m */,
 				20C80D3C1995DC3F00862E85 /* Blocks.h */,
 				20C80D3D1995DC3F00862E85 /* Blocks.m */,
+				20B4D0491AEF78D6008B60A3 /* Cloud.h */,
+				20B4D04A1AEF78D6008B60A3 /* Cloud.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				20C80D351995DB3700862E85 /* Entity.m in Sources */,
 				202102A91ADA21AA00FA5DFC /* dmkOptionsScene.m in Sources */,
 				2071D35C18E27EA900B3C849 /* dmkViewController.m in Sources */,
+				20B4D04B1AEF78D6008B60A3 /* Cloud.m in Sources */,
 				207CCDAB1908BE5800E5F67E /* SKTAudio.m in Sources */,
 				2071D35218E27EA900B3C849 /* main.m in Sources */,
 				20AE63D01A22F55800B5FE17 /* dmkMainMenuScene.m in Sources */,
@@ -712,7 +718,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GassyCow/GassyCow-Prefix.pch";
 				INFOPLIST_FILE = "GassyCow/GassyCow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
@@ -731,7 +737,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GassyCow/GassyCow-Prefix.pch";
 				INFOPLIST_FILE = "GassyCow/GassyCow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;

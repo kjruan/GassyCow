@@ -9,6 +9,7 @@
 #import "dmkMyScene.h"
 #import "DebugDraw.h"
 #import "Cow.h"
+#import "Cloud.h"
 #import "SKTUtils.h"
 @import AVFoundation;
 
@@ -40,6 +41,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     SKNode *_bgLayer;
     SKNode *_gameNode;
     SKNode *_hudLayer;
+    SKNode *_cloudLayer;
     SKNode *_cowLayer;
     SKNode *_penLayer;
     SKNode *_penCowLayer;
@@ -80,6 +82,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         _cowLayer = [SKNode node];
         [_gameNode addChild:_cowLayer];
         
+        _cloudLayer = [SKNode node];
+        [_gameNode addChild:_cloudLayer];
         /* Setup your scene here */
         [self initializeWithScene];
         
@@ -126,10 +130,26 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [_bgLayer addChild:bg];
 }
 
+- (void)spawnCloudAtLocation:(CGPoint)cloudPosX
+                            :(CGPoint)cloudPosY
+                            :(CGPoint)cloudCnt
+{
+    CGFloat count = ScalarRandomRange(cloudCnt.x, cloudCnt.y);
+    
+    for (int i = 0; i < count; i++) {
+        CGFloat randPosX = ScalarRandomRange(cloudPosX.x, cloudPosX.y);
+        CGFloat randPosY = ScalarRandomRange(cloudPosY.x, cloudPosY.y);
+        CGPoint pos = CGPointMake(randPosX, randPosY);
+        Cloud *_cloud = [[Cloud alloc] initWithPosition:pos];
+        [_cloudLayer addChild:_cloud];
+    }
+}
+
+
 - (void)spawnCowAtLocation:(CGPoint)pos
                           :(int)count
 {
-    NSMutableArray *cows = [[NSMutableArray alloc] initWithCapacity:50]; // Reserve 50 cow objects in array
+    NSMutableArray *cows = [[NSMutableArray alloc] initWithCapacity:0]; // New array every level. 
     for (int i = 0; i < count; i++ )
     {
         CGPoint modpos = CGPointMake(pos.x + ScalarRandomRange(10.0, 200.0), pos.y + ScalarRandomRange(0.0, 1.0));
@@ -207,6 +227,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [self setBackgroundImage:[level objectForKey:@"bgImgName"]];
     [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):(int)[[level objectForKey:@"cowCount"] integerValue]];
     [self spawnPenAtLocation:[level objectForKey:@"penImgName"] pos: CGPointFromString(level[@"penPosition"])];
+    [self spawnCloudAtLocation:CGPointFromString(level[@"cloudPosX"]) :CGPointFromString(level[@"cloudPosY"]) :CGPointFromString(level[@"cloudCountRange"])];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -299,8 +320,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [_hudLayer removeAllChildren];
     [_cowLayer removeAllChildren];
     [_penLayer removeAllChildren];
-    //[_boundLayer removeAllChildren];
-    //[_bgLayer removeAllChildren];
+    [_cloudLayer removeAllChildren];
 
     [self SetupLevel:1]; // Only one level. Increases cow by one every game.
 }
@@ -324,6 +344,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
     NSMutableDictionary *s = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
     [s setValue:[NSNumber numberWithInt:score] forKey:@"score"];
+    /*
     if ([s writeToFile:filePath atomically:NO])
     {
         //NSLog(@"Success, path: %@", filePath);
@@ -332,6 +353,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     {
         NSLog(@"Write failed, path: %@", filePath);
     }
+     */
 }
 
 - (int)getPlayerHighScore
