@@ -49,13 +49,17 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     SKLabelNode *_resetLabel;
     
     SKAction *_cowAnimation;
-    int _currentLevel;
+
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
     
+    int _currentLevel;
     int _cowNumber;
     int _score;
     int _lostCowCount;
+    
+    NSString *_path;
+    NSString *_path_score;
     
     AVAudioPlayer *_backgroundMusicPlayer;
 }
@@ -84,6 +88,10 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         
         _cloudLayer = [SKNode node];
         [_gameNode addChild:_cloudLayer];
+        
+        // Read settings
+        [self copyPlistFromBundleToFile];
+        
         /* Setup your scene here */
         [self initializeWithScene];
         
@@ -120,6 +128,31 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     
 }
 
+- (void)copyPlistFromBundleToFile
+{
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
+    NSString *documentsDirectory = [paths objectAtIndex:0]; //2
+    _path = [documentsDirectory stringByAppendingPathComponent:@"level1.plist"]; //3
+    _path_score =[documentsDirectory stringByAppendingPathComponent:@"highscore.plist"]; //3
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath: _path]) //4
+    {
+        NSString *bundle_1 = [[NSBundle mainBundle] pathForResource:@"level1" ofType:@"plist"]; //5
+        [fileManager copyItemAtPath:bundle_1 toPath: _path error:&error]; //6
+    }
+    
+    if (![fileManager fileExistsAtPath: _path_score]) //4
+    {
+        NSString *bundle_2 = [[NSBundle mainBundle] pathForResource:@"highscore" ofType:@"plist"]; //5
+        [fileManager copyItemAtPath:bundle_2 toPath: _path_score error:&error]; //6
+    }
+    
+}
+
+
 - (void)setBackgroundImage:(NSString *)bgName
 {
     //Setup background
@@ -142,6 +175,8 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         CGPoint pos = CGPointMake(randPosX, randPosY);
         Cloud *_cloud = [[Cloud alloc] initWithPosition:pos];
         [_cloudLayer addChild:_cloud];
+        [_cloud runAction:[_cloud moveCloud]];
+        
     }
 }
 
@@ -203,7 +238,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     NSString *fileName = [NSString stringWithFormat:@"level%i", levelNum];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
     NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:filePath];
-    _cowNumber = (int)[[level objectForKey:@"cowCount"] integerValue];
+    _cowNumber = [self getCowNumber];
     _lostCowCount = 0;
     
     // Reset Score
@@ -225,7 +260,7 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     [_hudLayer addChild:_scoreLabel];
     
     [self setBackgroundImage:[level objectForKey:@"bgImgName"]];
-    [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):(int)[[level objectForKey:@"cowCount"] integerValue]];
+    [self spawnCowAtLocation:CGPointFromString(level[@"cowPosition"]):[self getCowNumber]];
     [self spawnPenAtLocation:[level objectForKey:@"penImgName"] pos: CGPointFromString(level[@"penPosition"])];
     [self spawnCloudAtLocation:CGPointFromString(level[@"cloudPosX"]) :CGPointFromString(level[@"cloudPosY"]) :CGPointFromString(level[@"cloudCountRange"])];
 }
@@ -340,46 +375,36 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
 - (void)setPlayerHighScore:(int)score
 {
-    NSString *fileName = @"highscore";
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-    NSMutableDictionary *s = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-    [s setValue:[NSNumber numberWithInt:score] forKey:@"score"];
-    /*
-    if ([s writeToFile:filePath atomically:NO])
-    {
-        //NSLog(@"Success, path: %@", filePath);
-        //_score = (int)[[s objectForKey:@"score"] integerValue];
-    } else
-    {
-        NSLog(@"Write failed, path: %@", filePath);
-    }
-     */
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: _path_score];
+    int value = score;
+    [data setObject:[NSNumber numberWithInt:value] forKey:@"score"];
+    [data writeToFile: _path_score atomically:YES];
 }
 
 - (int)getPlayerHighScore
 {
-    NSString *fileName = @"highscore";
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-    NSMutableDictionary *s = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-    return (int)[[s objectForKey:@"score"] integerValue];
+    NSMutableDictionary *level = [[NSMutableDictionary alloc] initWithContentsOfFile: _path_score];
+    int value;
+    value = [[level objectForKey:@"score"] intValue];
+    return value;
 }
 
 
 - (void)setCowNumber:(int)count
 {
-    NSString *fileName = @"level1";
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-    NSMutableDictionary *level = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-    [level setValue:[NSNumber numberWithInt:count] forKey:@"cowCount"];
-    [level writeToFile:filePath atomically:NO];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: _path];
+    int value = count;
+    [data setObject:[NSNumber numberWithInt:value] forKey:@"cowCount"];
+    [data writeToFile: _path atomically:YES];
+
 }
 
 - (int)getCowNumber
 {
-    NSString *fileName = @"level1";
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-    NSMutableDictionary *level = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-    return (int)[[level objectForKey:@"cowCount"] integerValue];
+    NSMutableDictionary *level = [[NSMutableDictionary alloc] initWithContentsOfFile: _path];
+    int value;
+    value = [[level objectForKey:@"cowCount"] intValue];
+    return value;
 }
 
 - (void)resetGame

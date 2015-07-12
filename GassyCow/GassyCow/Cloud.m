@@ -18,7 +18,9 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
 
 @implementation Cloud
 {
-
+    SKAction* _cloudAnimation;
+    CGVector _leftMoveVector;
+    CGVector _rightMoveVector;
 }
 
 +(SKTexture *)generateTexture {
@@ -42,14 +44,21 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
         self.texture = [Cloud generateTexture];
         self.position = position;
         
-        // Reduce cow size
+        CGFloat direction = ScalarRandomRange(10.0, 60.0);
+        CGFloat magnitude = ScalarRandomRange(1.0, 3.0);
+        _leftMoveVector = CGVectorMake(direction, magnitude);
+        _rightMoveVector = CGVectorMake(direction * -1, magnitude * -1);
     }
     return self;
 }
 
--(void)moveCloud
+-(SKAction *)moveCloud
 {
-
+    SKAction* moveLeft = [SKAction moveBy:_leftMoveVector duration:5.0];
+    SKAction* moveRight = [SKAction moveBy:_rightMoveVector duration:5.0];
+    SKAction* pause = [SKAction waitForDuration:1.0];
+    SKAction *actionGroup = [SKAction repeatActionForever:[SKAction sequence:@[moveLeft, pause, moveRight, pause]]];
+    return actionGroup;
 }
 
 -(CGVector)travelVector:(CGFloat)zRotation

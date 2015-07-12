@@ -12,5 +12,6 @@
 
 -(SKNode *)initWithPosition:(CGPoint)position;
 -(CGVector)travelVector:(CGFloat)zRotation;
+-(SKAction *)moveCloud; 
 
 @end
