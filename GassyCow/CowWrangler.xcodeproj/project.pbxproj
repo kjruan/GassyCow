@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20114C5D199C906C00416CBC /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 20114C5C199C906C00416CBC /* sprites.atlas */; };
-		2011C24A1A147207001FC6D5 /* fart.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2481A147207001FC6D5 /* fart.sks */; };
+		2011C24A1A147207001FC6D5 /* fs.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2481A147207001FC6D5 /* fs.sks */; };
 		2011C24B1A147207001FC6D5 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2011C2491A147207001FC6D5 /* spark.png */; };
 		2015B3281A452DA200CD7C99 /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2015B3271A452DA200CD7C99 /* level2.plist */; };
 		202102A91ADA21AA00FA5DFC /* dmkOptionsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 202102A81ADA21AA00FA5DFC /* dmkOptionsScene.m */; };
@@ -30,7 +30,7 @@
 		2071D36B18E27EA900B3C849 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34318E27EA900B3C849 /* Foundation.framework */; };
 		2071D36C18E27EA900B3C849 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D34718E27EA900B3C849 /* UIKit.framework */; };
 		2071D37418E27EA900B3C849 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2071D37218E27EA900B3C849 /* InfoPlist.strings */; };
-		2071D37618E27EA900B3C849 /* GassyCowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2071D37518E27EA900B3C849 /* GassyCowTests.m */; };
+		2071D37618E27EA900B3C849 /* CowWranglerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2071D37518E27EA900B3C849 /* CowWranglerTests.m */; };
 		2071D38918E293E800B3C849 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2071D38818E293E800B3C849 /* CoreMotion.framework */; };
 		207CCDA81908BE5800E5F67E /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 207CCD9F1908BE5800E5F67E /* SKAction+SKTExtras.m */; };
 		207CCDA91908BE5800E5F67E /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 207CCDA11908BE5800E5F67E /* SKEmitterNode+SKTExtras.m */; };
@@ -40,27 +40,27 @@
 		20A75523199DCD73001BA5DC /* DebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A75522199DCD73001BA5DC /* DebugDraw.m */; };
 		20AE63D01A22F55800B5FE17 /* dmkMainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AE63CF1A22F55800B5FE17 /* dmkMainMenuScene.m */; };
 		20B4D04B1AEF78D6008B60A3 /* Cloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4D04A1AEF78D6008B60A3 /* Cloud.m */; };
-		20BECC921ABDE47400C5C90E /* Fart1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC6E1ABDE47400C5C90E /* Fart1.mp3 */; };
-		20BECC931ABDE47400C5C90E /* Fart10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC6F1ABDE47400C5C90E /* Fart10.mp3 */; };
-		20BECC941ABDE47400C5C90E /* Fart11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC701ABDE47400C5C90E /* Fart11.mp3 */; };
-		20BECC951ABDE47400C5C90E /* Fart12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC711ABDE47400C5C90E /* Fart12.mp3 */; };
-		20BECC961ABDE47400C5C90E /* Fart13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC721ABDE47400C5C90E /* Fart13.mp3 */; };
-		20BECC971ABDE47400C5C90E /* Fart14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC731ABDE47400C5C90E /* Fart14.mp3 */; };
-		20BECC981ABDE47400C5C90E /* Fart15.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC741ABDE47400C5C90E /* Fart15.mp3 */; };
-		20BECC991ABDE47400C5C90E /* Fart16.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC751ABDE47400C5C90E /* Fart16.mp3 */; };
-		20BECC9A1ABDE47400C5C90E /* Fart17.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC761ABDE47400C5C90E /* Fart17.mp3 */; };
-		20BECC9B1ABDE47400C5C90E /* Fart18.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC771ABDE47400C5C90E /* Fart18.mp3 */; };
-		20BECC9C1ABDE47400C5C90E /* Fart19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC781ABDE47400C5C90E /* Fart19.mp3 */; };
-		20BECC9D1ABDE47400C5C90E /* Fart2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC791ABDE47400C5C90E /* Fart2.mp3 */; };
-		20BECC9E1ABDE47400C5C90E /* Fart20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7A1ABDE47400C5C90E /* Fart20.mp3 */; };
-		20BECC9F1ABDE47400C5C90E /* Fart21.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7B1ABDE47400C5C90E /* Fart21.mp3 */; };
-		20BECCA01ABDE47400C5C90E /* Fart22.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7C1ABDE47400C5C90E /* Fart22.mp3 */; };
-		20BECCA11ABDE47400C5C90E /* Fart3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7D1ABDE47400C5C90E /* Fart3.mp3 */; };
-		20BECCA21ABDE47400C5C90E /* Fart4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7E1ABDE47400C5C90E /* Fart4.mp3 */; };
-		20BECCA31ABDE47400C5C90E /* Fart5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7F1ABDE47400C5C90E /* Fart5.mp3 */; };
-		20BECCA41ABDE47400C5C90E /* Fart6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC801ABDE47400C5C90E /* Fart6.mp3 */; };
-		20BECCA51ABDE47400C5C90E /* Fart7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC811ABDE47400C5C90E /* Fart7.mp3 */; };
-		20BECCA61ABDE47400C5C90E /* Fart8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC821ABDE47400C5C90E /* Fart8.mp3 */; };
+		20BECC921ABDE47400C5C90E /* fs1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC6E1ABDE47400C5C90E /* fs1.mp3 */; };
+		20BECC931ABDE47400C5C90E /* fs10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC6F1ABDE47400C5C90E /* fs10.mp3 */; };
+		20BECC941ABDE47400C5C90E /* fs11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC701ABDE47400C5C90E /* fs11.mp3 */; };
+		20BECC951ABDE47400C5C90E /* fs12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC711ABDE47400C5C90E /* fs12.mp3 */; };
+		20BECC961ABDE47400C5C90E /* fs13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC721ABDE47400C5C90E /* fs13.mp3 */; };
+		20BECC971ABDE47400C5C90E /* fs14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC731ABDE47400C5C90E /* fs14.mp3 */; };
+		20BECC981ABDE47400C5C90E /* fs15.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC741ABDE47400C5C90E /* fs15.mp3 */; };
+		20BECC991ABDE47400C5C90E /* fs16.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC751ABDE47400C5C90E /* fs16.mp3 */; };
+		20BECC9A1ABDE47400C5C90E /* fs17.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC761ABDE47400C5C90E /* fs17.mp3 */; };
+		20BECC9B1ABDE47400C5C90E /* fs18.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC771ABDE47400C5C90E /* fs18.mp3 */; };
+		20BECC9C1ABDE47400C5C90E /* fs19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC781ABDE47400C5C90E /* fs19.mp3 */; };
+		20BECC9D1ABDE47400C5C90E /* fs2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC791ABDE47400C5C90E /* fs2.mp3 */; };
+		20BECC9E1ABDE47400C5C90E /* fs20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7A1ABDE47400C5C90E /* fs20.mp3 */; };
+		20BECC9F1ABDE47400C5C90E /* fs21.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7B1ABDE47400C5C90E /* fs21.mp3 */; };
+		20BECCA01ABDE47400C5C90E /* fs22.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7C1ABDE47400C5C90E /* fs22.mp3 */; };
+		20BECCA11ABDE47400C5C90E /* fs3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7D1ABDE47400C5C90E /* fs3.mp3 */; };
+		20BECCA21ABDE47400C5C90E /* fs4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7E1ABDE47400C5C90E /* fs4.mp3 */; };
+		20BECCA31ABDE47400C5C90E /* fs5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC7F1ABDE47400C5C90E /* fs5.mp3 */; };
+		20BECCA41ABDE47400C5C90E /* fs6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC801ABDE47400C5C90E /* fs6.mp3 */; };
+		20BECCA51ABDE47400C5C90E /* fs7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC811ABDE47400C5C90E /* fs7.mp3 */; };
+		20BECCA61ABDE47400C5C90E /* fs8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC821ABDE47400C5C90E /* fs8.mp3 */; };
 		20BECCA71ABDE47400C5C90E /* Moo1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC831ABDE47400C5C90E /* Moo1.mp3 */; };
 		20BECCA81ABDE47400C5C90E /* Moo10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC841ABDE47400C5C90E /* Moo10.mp3 */; };
 		20BECCA91ABDE47400C5C90E /* Moo11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC851ABDE47400C5C90E /* Moo11.mp3 */; };
@@ -77,9 +77,9 @@
 		20BECCB41ABDE47400C5C90E /* Moo9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC901ABDE47400C5C90E /* Moo9.mp3 */; };
 		20BECCB51ABDE47400C5C90E /* Theme1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECC911ABDE47400C5C90E /* Theme1.mp3 */; };
 		20BECCB71ABDE52F00C5C90E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BECCB61ABDE52F00C5C90E /* AVFoundation.framework */; };
-		20BECCBB1ABE8B1D00C5C90E /* Fart9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECCBA1ABE8B1D00C5C90E /* Fart9.mp3 */; };
+		20BECCBB1ABE8B1D00C5C90E /* fs9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 20BECCBA1ABE8B1D00C5C90E /* fs9.mp3 */; };
 		20C20D0C1927B6C60076F163 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20C20D0B1927B6C60076F163 /* level1.plist */; };
-		20C2A77819F4BC3600FA2B4E /* FartParticleSystem.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */; };
+		20C2A77819F4BC3600FA2B4E /* fsParticleSystem.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77619F4BC3600FA2B4E /* fsParticleSystem.scnp */; };
 		20C2A77919F4BC3600FA2B4E /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C2A77719F4BC3600FA2B4E /* smoke.png */; };
 		20C80D351995DB3700862E85 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D341995DB3700862E85 /* Entity.m */; };
 		20C80D3B1995DC2100862E85 /* Cow.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C80D3A1995DC2100862E85 /* Cow.m */; };
@@ -99,7 +99,7 @@
 /* Begin PBXFileReference section */
 		200A4F6D1ACBB7000038509B /* Pin.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pin.aif; sourceTree = "<group>"; };
 		20114C5C199C906C00416CBC /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
-		2011C2481A147207001FC6D5 /* fart.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fart.sks; sourceTree = "<group>"; };
+		2011C2481A147207001FC6D5 /* fs.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fs.sks; sourceTree = "<group>"; };
 		2011C2491A147207001FC6D5 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		2015B3271A452DA200CD7C99 /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
 		202102A71ADA21AA00FA5DFC /* dmkOptionsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dmkOptionsScene.h; sourceTree = "<group>"; };
@@ -107,15 +107,15 @@
 		203C45461AD9F9A400D6838E /* highscore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = highscore.plist; sourceTree = "<group>"; };
 		203D5CB11A28E89D0055E78F /* dmkCreditScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dmkCreditScene.h; sourceTree = "<group>"; };
 		203D5CB21A28E89D0055E78F /* dmkCreditScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dmkCreditScene.m; sourceTree = "<group>"; };
-		2071D34018E27EA900B3C849 /* GassyCow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GassyCow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2071D34018E27EA900B3C849 /* CowWrangler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CowWrangler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2071D34318E27EA900B3C849 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2071D34518E27EA900B3C849 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2071D34718E27EA900B3C849 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2071D34918E27EA900B3C849 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		2071D34D18E27EA900B3C849 /* GassyCow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GassyCow-Info.plist"; sourceTree = "<group>"; };
+		2071D34D18E27EA900B3C849 /* CowWrangler-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CowWrangler-Info.plist"; sourceTree = "<group>"; };
 		2071D34F18E27EA900B3C849 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2071D35118E27EA900B3C849 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2071D35318E27EA900B3C849 /* GassyCow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GassyCow-Prefix.pch"; sourceTree = "<group>"; };
+		2071D35318E27EA900B3C849 /* CowWrangler-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CowWrangler-Prefix.pch"; sourceTree = "<group>"; };
 		2071D35418E27EA900B3C849 /* dmkAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dmkAppDelegate.h; sourceTree = "<group>"; };
 		2071D35518E27EA900B3C849 /* dmkAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dmkAppDelegate.m; sourceTree = "<group>"; };
 		2071D35818E27EA900B3C849 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,11 +125,11 @@
 		2071D35E18E27EA900B3C849 /* dmkMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dmkMyScene.m; sourceTree = "<group>"; };
 		2071D36018E27EA900B3C849 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		2071D36218E27EA900B3C849 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2071D36818E27EA900B3C849 /* GassyCowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GassyCowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2071D36818E27EA900B3C849 /* CowWranglerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CowWranglerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2071D36918E27EA900B3C849 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2071D37118E27EA900B3C849 /* GassyCowTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GassyCowTests-Info.plist"; sourceTree = "<group>"; };
+		2071D37118E27EA900B3C849 /* CowWranglerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CowWranglerTests-Info.plist"; sourceTree = "<group>"; };
 		2071D37318E27EA900B3C849 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2071D37518E27EA900B3C849 /* GassyCowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GassyCowTests.m; sourceTree = "<group>"; };
+		2071D37518E27EA900B3C849 /* CowWranglerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CowWranglerTests.m; sourceTree = "<group>"; };
 		2071D38818E293E800B3C849 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		207CCD9E1908BE5800E5F67E /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
 		207CCD9F1908BE5800E5F67E /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
@@ -147,27 +147,27 @@
 		20AE63CF1A22F55800B5FE17 /* dmkMainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dmkMainMenuScene.m; sourceTree = "<group>"; };
 		20B4D0491AEF78D6008B60A3 /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
 		20B4D04A1AEF78D6008B60A3 /* Cloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cloud.m; sourceTree = "<group>"; };
-		20BECC6E1ABDE47400C5C90E /* Fart1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart1.mp3; sourceTree = "<group>"; };
-		20BECC6F1ABDE47400C5C90E /* Fart10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart10.mp3; sourceTree = "<group>"; };
-		20BECC701ABDE47400C5C90E /* Fart11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart11.mp3; sourceTree = "<group>"; };
-		20BECC711ABDE47400C5C90E /* Fart12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart12.mp3; sourceTree = "<group>"; };
-		20BECC721ABDE47400C5C90E /* Fart13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart13.mp3; sourceTree = "<group>"; };
-		20BECC731ABDE47400C5C90E /* Fart14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart14.mp3; sourceTree = "<group>"; };
-		20BECC741ABDE47400C5C90E /* Fart15.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart15.mp3; sourceTree = "<group>"; };
-		20BECC751ABDE47400C5C90E /* Fart16.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart16.mp3; sourceTree = "<group>"; };
-		20BECC761ABDE47400C5C90E /* Fart17.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart17.mp3; sourceTree = "<group>"; };
-		20BECC771ABDE47400C5C90E /* Fart18.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart18.mp3; sourceTree = "<group>"; };
-		20BECC781ABDE47400C5C90E /* Fart19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart19.mp3; sourceTree = "<group>"; };
-		20BECC791ABDE47400C5C90E /* Fart2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart2.mp3; sourceTree = "<group>"; };
-		20BECC7A1ABDE47400C5C90E /* Fart20.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart20.mp3; sourceTree = "<group>"; };
-		20BECC7B1ABDE47400C5C90E /* Fart21.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart21.mp3; sourceTree = "<group>"; };
-		20BECC7C1ABDE47400C5C90E /* Fart22.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart22.mp3; sourceTree = "<group>"; };
-		20BECC7D1ABDE47400C5C90E /* Fart3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart3.mp3; sourceTree = "<group>"; };
-		20BECC7E1ABDE47400C5C90E /* Fart4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart4.mp3; sourceTree = "<group>"; };
-		20BECC7F1ABDE47400C5C90E /* Fart5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart5.mp3; sourceTree = "<group>"; };
-		20BECC801ABDE47400C5C90E /* Fart6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart6.mp3; sourceTree = "<group>"; };
-		20BECC811ABDE47400C5C90E /* Fart7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart7.mp3; sourceTree = "<group>"; };
-		20BECC821ABDE47400C5C90E /* Fart8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart8.mp3; sourceTree = "<group>"; };
+		20BECC6E1ABDE47400C5C90E /* fs1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs1.mp3; sourceTree = "<group>"; };
+		20BECC6F1ABDE47400C5C90E /* fs10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs10.mp3; sourceTree = "<group>"; };
+		20BECC701ABDE47400C5C90E /* fs11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs11.mp3; sourceTree = "<group>"; };
+		20BECC711ABDE47400C5C90E /* fs12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs12.mp3; sourceTree = "<group>"; };
+		20BECC721ABDE47400C5C90E /* fs13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs13.mp3; sourceTree = "<group>"; };
+		20BECC731ABDE47400C5C90E /* fs14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs14.mp3; sourceTree = "<group>"; };
+		20BECC741ABDE47400C5C90E /* fs15.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs15.mp3; sourceTree = "<group>"; };
+		20BECC751ABDE47400C5C90E /* fs16.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs16.mp3; sourceTree = "<group>"; };
+		20BECC761ABDE47400C5C90E /* fs17.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs17.mp3; sourceTree = "<group>"; };
+		20BECC771ABDE47400C5C90E /* fs18.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs18.mp3; sourceTree = "<group>"; };
+		20BECC781ABDE47400C5C90E /* fs19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs19.mp3; sourceTree = "<group>"; };
+		20BECC791ABDE47400C5C90E /* fs2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs2.mp3; sourceTree = "<group>"; };
+		20BECC7A1ABDE47400C5C90E /* fs20.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs20.mp3; sourceTree = "<group>"; };
+		20BECC7B1ABDE47400C5C90E /* fs21.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs21.mp3; sourceTree = "<group>"; };
+		20BECC7C1ABDE47400C5C90E /* fs22.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs22.mp3; sourceTree = "<group>"; };
+		20BECC7D1ABDE47400C5C90E /* fs3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs3.mp3; sourceTree = "<group>"; };
+		20BECC7E1ABDE47400C5C90E /* fs4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs4.mp3; sourceTree = "<group>"; };
+		20BECC7F1ABDE47400C5C90E /* fs5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs5.mp3; sourceTree = "<group>"; };
+		20BECC801ABDE47400C5C90E /* fs6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs6.mp3; sourceTree = "<group>"; };
+		20BECC811ABDE47400C5C90E /* fs7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs7.mp3; sourceTree = "<group>"; };
+		20BECC821ABDE47400C5C90E /* fs8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs8.mp3; sourceTree = "<group>"; };
 		20BECC831ABDE47400C5C90E /* Moo1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Moo1.mp3; sourceTree = "<group>"; };
 		20BECC841ABDE47400C5C90E /* Moo10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Moo10.mp3; sourceTree = "<group>"; };
 		20BECC851ABDE47400C5C90E /* Moo11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Moo11.mp3; sourceTree = "<group>"; };
@@ -184,9 +184,9 @@
 		20BECC901ABDE47400C5C90E /* Moo9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Moo9.mp3; sourceTree = "<group>"; };
 		20BECC911ABDE47400C5C90E /* Theme1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Theme1.mp3; sourceTree = "<group>"; };
 		20BECCB61ABDE52F00C5C90E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		20BECCBA1ABE8B1D00C5C90E /* Fart9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fart9.mp3; sourceTree = "<group>"; };
+		20BECCBA1ABE8B1D00C5C90E /* fs9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fs9.mp3; sourceTree = "<group>"; };
 		20C20D0B1927B6C60076F163 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
-		20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = FartParticleSystem.scnp; sourceTree = "<group>"; };
+		20C2A77619F4BC3600FA2B4E /* fsParticleSystem.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = fsParticleSystem.scnp; sourceTree = "<group>"; };
 		20C2A77719F4BC3600FA2B4E /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
 		20C80D331995DB3700862E85 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		20C80D341995DB3700862E85 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
@@ -226,9 +226,9 @@
 		2011C2471A1471BF001FC6D5 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
-				20C2A77619F4BC3600FA2B4E /* FartParticleSystem.scnp */,
+				20C2A77619F4BC3600FA2B4E /* fsParticleSystem.scnp */,
 				2011C2491A147207001FC6D5 /* spark.png */,
-				2011C2481A147207001FC6D5 /* fart.sks */,
+				2011C2481A147207001FC6D5 /* fs.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -236,8 +236,8 @@
 		2071D33718E27EA900B3C849 = {
 			isa = PBXGroup;
 			children = (
-				2071D34B18E27EA900B3C849 /* GassyCow */,
-				2071D36F18E27EA900B3C849 /* GassyCowTests */,
+				2071D34B18E27EA900B3C849 /* CowWrangler */,
+				2071D36F18E27EA900B3C849 /* CowWranglerTests */,
 				2071D34218E27EA900B3C849 /* Frameworks */,
 				2071D34118E27EA900B3C849 /* Products */,
 			);
@@ -246,8 +246,8 @@
 		2071D34118E27EA900B3C849 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2071D34018E27EA900B3C849 /* GassyCow.app */,
-				2071D36818E27EA900B3C849 /* GassyCowTests.xctest */,
+				2071D34018E27EA900B3C849 /* CowWrangler.app */,
+				2071D36818E27EA900B3C849 /* CowWranglerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2071D34B18E27EA900B3C849 /* GassyCow */ = {
+		2071D34B18E27EA900B3C849 /* CowWrangler */ = {
 			isa = PBXGroup;
 			children = (
 				2011C2471A1471BF001FC6D5 /* Particles */,
@@ -293,33 +293,35 @@
 				202102A71ADA21AA00FA5DFC /* dmkOptionsScene.h */,
 				202102A81ADA21AA00FA5DFC /* dmkOptionsScene.m */,
 			);
+			name = CowWrangler;
 			path = GassyCow;
 			sourceTree = "<group>";
 		};
 		2071D34C18E27EA900B3C849 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2071D34D18E27EA900B3C849 /* GassyCow-Info.plist */,
+				2071D34D18E27EA900B3C849 /* CowWrangler-Info.plist */,
 				2071D34E18E27EA900B3C849 /* InfoPlist.strings */,
 				2071D35118E27EA900B3C849 /* main.m */,
-				2071D35318E27EA900B3C849 /* GassyCow-Prefix.pch */,
+				2071D35318E27EA900B3C849 /* CowWrangler-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2071D36F18E27EA900B3C849 /* GassyCowTests */ = {
+		2071D36F18E27EA900B3C849 /* CowWranglerTests */ = {
 			isa = PBXGroup;
 			children = (
-				2071D37518E27EA900B3C849 /* GassyCowTests.m */,
+				2071D37518E27EA900B3C849 /* CowWranglerTests.m */,
 				2071D37018E27EA900B3C849 /* Supporting Files */,
 			);
+			name = CowWranglerTests;
 			path = GassyCowTests;
 			sourceTree = "<group>";
 		};
 		2071D37018E27EA900B3C849 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2071D37118E27EA900B3C849 /* GassyCowTests-Info.plist */,
+				2071D37118E27EA900B3C849 /* CowWranglerTests-Info.plist */,
 				2071D37218E27EA900B3C849 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -356,28 +358,28 @@
 			isa = PBXGroup;
 			children = (
 				200A4F6D1ACBB7000038509B /* Pin.aif */,
-				20BECC6E1ABDE47400C5C90E /* Fart1.mp3 */,
-				20BECC6F1ABDE47400C5C90E /* Fart10.mp3 */,
-				20BECC701ABDE47400C5C90E /* Fart11.mp3 */,
-				20BECC711ABDE47400C5C90E /* Fart12.mp3 */,
-				20BECC721ABDE47400C5C90E /* Fart13.mp3 */,
-				20BECC731ABDE47400C5C90E /* Fart14.mp3 */,
-				20BECC741ABDE47400C5C90E /* Fart15.mp3 */,
-				20BECC751ABDE47400C5C90E /* Fart16.mp3 */,
-				20BECCBA1ABE8B1D00C5C90E /* Fart9.mp3 */,
-				20BECC761ABDE47400C5C90E /* Fart17.mp3 */,
-				20BECC771ABDE47400C5C90E /* Fart18.mp3 */,
-				20BECC781ABDE47400C5C90E /* Fart19.mp3 */,
-				20BECC791ABDE47400C5C90E /* Fart2.mp3 */,
-				20BECC7A1ABDE47400C5C90E /* Fart20.mp3 */,
-				20BECC7B1ABDE47400C5C90E /* Fart21.mp3 */,
-				20BECC7C1ABDE47400C5C90E /* Fart22.mp3 */,
-				20BECC7D1ABDE47400C5C90E /* Fart3.mp3 */,
-				20BECC7E1ABDE47400C5C90E /* Fart4.mp3 */,
-				20BECC7F1ABDE47400C5C90E /* Fart5.mp3 */,
-				20BECC801ABDE47400C5C90E /* Fart6.mp3 */,
-				20BECC811ABDE47400C5C90E /* Fart7.mp3 */,
-				20BECC821ABDE47400C5C90E /* Fart8.mp3 */,
+				20BECC6E1ABDE47400C5C90E /* fs1.mp3 */,
+				20BECC6F1ABDE47400C5C90E /* fs10.mp3 */,
+				20BECC701ABDE47400C5C90E /* fs11.mp3 */,
+				20BECC711ABDE47400C5C90E /* fs12.mp3 */,
+				20BECC721ABDE47400C5C90E /* fs13.mp3 */,
+				20BECC731ABDE47400C5C90E /* fs14.mp3 */,
+				20BECC741ABDE47400C5C90E /* fs15.mp3 */,
+				20BECC751ABDE47400C5C90E /* fs16.mp3 */,
+				20BECCBA1ABE8B1D00C5C90E /* fs9.mp3 */,
+				20BECC761ABDE47400C5C90E /* fs17.mp3 */,
+				20BECC771ABDE47400C5C90E /* fs18.mp3 */,
+				20BECC781ABDE47400C5C90E /* fs19.mp3 */,
+				20BECC791ABDE47400C5C90E /* fs2.mp3 */,
+				20BECC7A1ABDE47400C5C90E /* fs20.mp3 */,
+				20BECC7B1ABDE47400C5C90E /* fs21.mp3 */,
+				20BECC7C1ABDE47400C5C90E /* fs22.mp3 */,
+				20BECC7D1ABDE47400C5C90E /* fs3.mp3 */,
+				20BECC7E1ABDE47400C5C90E /* fs4.mp3 */,
+				20BECC7F1ABDE47400C5C90E /* fs5.mp3 */,
+				20BECC801ABDE47400C5C90E /* fs6.mp3 */,
+				20BECC811ABDE47400C5C90E /* fs7.mp3 */,
+				20BECC821ABDE47400C5C90E /* fs8.mp3 */,
 				20BECC831ABDE47400C5C90E /* Moo1.mp3 */,
 				20BECC841ABDE47400C5C90E /* Moo10.mp3 */,
 				20BECC851ABDE47400C5C90E /* Moo11.mp3 */,
@@ -426,9 +428,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2071D33F18E27EA900B3C849 /* GassyCow */ = {
+		2071D33F18E27EA900B3C849 /* CowWrangler */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2071D37918E27EA900B3C849 /* Build configuration list for PBXNativeTarget "GassyCow" */;
+			buildConfigurationList = 2071D37918E27EA900B3C849 /* Build configuration list for PBXNativeTarget "CowWrangler" */;
 			buildPhases = (
 				2071D33C18E27EA900B3C849 /* Sources */,
 				2071D33D18E27EA900B3C849 /* Frameworks */,
@@ -438,14 +440,14 @@
 			);
 			dependencies = (
 			);
-			name = GassyCow;
+			name = CowWrangler;
 			productName = GassyCow;
-			productReference = 2071D34018E27EA900B3C849 /* GassyCow.app */;
+			productReference = 2071D34018E27EA900B3C849 /* CowWrangler.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2071D36718E27EA900B3C849 /* GassyCowTests */ = {
+		2071D36718E27EA900B3C849 /* CowWranglerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2071D37C18E27EA900B3C849 /* Build configuration list for PBXNativeTarget "GassyCowTests" */;
+			buildConfigurationList = 2071D37C18E27EA900B3C849 /* Build configuration list for PBXNativeTarget "CowWranglerTests" */;
 			buildPhases = (
 				2071D36418E27EA900B3C849 /* Sources */,
 				2071D36518E27EA900B3C849 /* Frameworks */,
@@ -456,9 +458,9 @@
 			dependencies = (
 				2071D36E18E27EA900B3C849 /* PBXTargetDependency */,
 			);
-			name = GassyCowTests;
+			name = CowWranglerTests;
 			productName = GassyCowTests;
-			productReference = 2071D36818E27EA900B3C849 /* GassyCowTests.xctest */;
+			productReference = 2071D36818E27EA900B3C849 /* CowWranglerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -479,7 +481,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2071D33B18E27EA900B3C849 /* Build configuration list for PBXProject "GassyCow" */;
+			buildConfigurationList = 2071D33B18E27EA900B3C849 /* Build configuration list for PBXProject "CowWrangler" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -492,8 +494,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2071D33F18E27EA900B3C849 /* GassyCow */,
-				2071D36718E27EA900B3C849 /* GassyCowTests */,
+				2071D33F18E27EA900B3C849 /* CowWrangler */,
+				2071D36718E27EA900B3C849 /* CowWranglerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -504,53 +506,53 @@
 			buildActionMask = 2147483647;
 			files = (
 				20114C5D199C906C00416CBC /* sprites.atlas in Resources */,
-				20BECC9A1ABDE47400C5C90E /* Fart17.mp3 in Resources */,
+				20BECC9A1ABDE47400C5C90E /* fs17.mp3 in Resources */,
 				20BECCA91ABDE47400C5C90E /* Moo11.mp3 in Resources */,
-				20BECC941ABDE47400C5C90E /* Fart11.mp3 in Resources */,
+				20BECC941ABDE47400C5C90E /* fs11.mp3 in Resources */,
 				203C45471AD9F9A400D6838E /* highscore.plist in Resources */,
 				20BECCB21ABDE47400C5C90E /* Moo7.mp3 in Resources */,
 				20BECCAF1ABDE47400C5C90E /* Moo4.mp3 in Resources */,
 				20BECCB11ABDE47400C5C90E /* Moo6.mp3 in Resources */,
 				20BECCAB1ABDE47400C5C90E /* Moo13.mp3 in Resources */,
-				20BECCA31ABDE47400C5C90E /* Fart5.mp3 in Resources */,
-				20BECC991ABDE47400C5C90E /* Fart16.mp3 in Resources */,
-				20BECC921ABDE47400C5C90E /* Fart1.mp3 in Resources */,
+				20BECCA31ABDE47400C5C90E /* fs5.mp3 in Resources */,
+				20BECC991ABDE47400C5C90E /* fs16.mp3 in Resources */,
+				20BECC921ABDE47400C5C90E /* fs1.mp3 in Resources */,
 				20BECCA71ABDE47400C5C90E /* Moo1.mp3 in Resources */,
-				20BECC9D1ABDE47400C5C90E /* Fart2.mp3 in Resources */,
-				20BECCBB1ABE8B1D00C5C90E /* Fart9.mp3 in Resources */,
+				20BECC9D1ABDE47400C5C90E /* fs2.mp3 in Resources */,
+				20BECCBB1ABE8B1D00C5C90E /* fs9.mp3 in Resources */,
 				20BECCAA1ABDE47400C5C90E /* Moo12.mp3 in Resources */,
 				20BECCB01ABDE47400C5C90E /* Moo5.mp3 in Resources */,
 				20BECCAC1ABDE47400C5C90E /* Moo14.mp3 in Resources */,
 				20BECCAE1ABDE47400C5C90E /* Moo3.mp3 in Resources */,
 				2071D35018E27EA900B3C849 /* InfoPlist.strings in Resources */,
-				2011C24A1A147207001FC6D5 /* fart.sks in Resources */,
+				2011C24A1A147207001FC6D5 /* fs.sks in Resources */,
 				2071D36318E27EA900B3C849 /* Images.xcassets in Resources */,
-				20BECCA41ABDE47400C5C90E /* Fart6.mp3 in Resources */,
-				20BECC951ABDE47400C5C90E /* Fart12.mp3 in Resources */,
+				20BECCA41ABDE47400C5C90E /* fs6.mp3 in Resources */,
+				20BECC951ABDE47400C5C90E /* fs12.mp3 in Resources */,
 				20BECCB51ABDE47400C5C90E /* Theme1.mp3 in Resources */,
-				20BECCA61ABDE47400C5C90E /* Fart8.mp3 in Resources */,
-				20BECCA11ABDE47400C5C90E /* Fart3.mp3 in Resources */,
-				20BECC9C1ABDE47400C5C90E /* Fart19.mp3 in Resources */,
+				20BECCA61ABDE47400C5C90E /* fs8.mp3 in Resources */,
+				20BECCA11ABDE47400C5C90E /* fs3.mp3 in Resources */,
+				20BECC9C1ABDE47400C5C90E /* fs19.mp3 in Resources */,
 				20C2A77919F4BC3600FA2B4E /* smoke.png in Resources */,
 				20BECCB41ABDE47400C5C90E /* Moo9.mp3 in Resources */,
 				2011C24B1A147207001FC6D5 /* spark.png in Resources */,
 				20BECCB31ABDE47400C5C90E /* Moo8.mp3 in Resources */,
-				20BECC981ABDE47400C5C90E /* Fart15.mp3 in Resources */,
-				20BECC961ABDE47400C5C90E /* Fart13.mp3 in Resources */,
-				20BECCA21ABDE47400C5C90E /* Fart4.mp3 in Resources */,
-				20BECC9E1ABDE47400C5C90E /* Fart20.mp3 in Resources */,
-				20BECC971ABDE47400C5C90E /* Fart14.mp3 in Resources */,
+				20BECC981ABDE47400C5C90E /* fs15.mp3 in Resources */,
+				20BECC961ABDE47400C5C90E /* fs13.mp3 in Resources */,
+				20BECCA21ABDE47400C5C90E /* fs4.mp3 in Resources */,
+				20BECC9E1ABDE47400C5C90E /* fs20.mp3 in Resources */,
+				20BECC971ABDE47400C5C90E /* fs14.mp3 in Resources */,
 				20BECCAD1ABDE47400C5C90E /* Moo2.mp3 in Resources */,
-				20BECCA01ABDE47400C5C90E /* Fart22.mp3 in Resources */,
-				20BECCA51ABDE47400C5C90E /* Fart7.mp3 in Resources */,
+				20BECCA01ABDE47400C5C90E /* fs22.mp3 in Resources */,
+				20BECCA51ABDE47400C5C90E /* fs7.mp3 in Resources */,
 				20C20D0C1927B6C60076F163 /* level1.plist in Resources */,
-				20BECC9B1ABDE47400C5C90E /* Fart18.mp3 in Resources */,
+				20BECC9B1ABDE47400C5C90E /* fs18.mp3 in Resources */,
 				20BECCA81ABDE47400C5C90E /* Moo10.mp3 in Resources */,
 				2071D36118E27EA900B3C849 /* Spaceship.png in Resources */,
-				20C2A77819F4BC3600FA2B4E /* FartParticleSystem.scnp in Resources */,
-				20BECC9F1ABDE47400C5C90E /* Fart21.mp3 in Resources */,
+				20C2A77819F4BC3600FA2B4E /* fsParticleSystem.scnp in Resources */,
+				20BECC9F1ABDE47400C5C90E /* fs21.mp3 in Resources */,
 				2015B3281A452DA200CD7C99 /* level2.plist in Resources */,
-				20BECC931ABDE47400C5C90E /* Fart10.mp3 in Resources */,
+				20BECC931ABDE47400C5C90E /* fs10.mp3 in Resources */,
 				2071D35918E27EA900B3C849 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,7 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2071D37618E27EA900B3C849 /* GassyCowTests.m in Sources */,
+				2071D37618E27EA900B3C849 /* CowWranglerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,7 +605,7 @@
 /* Begin PBXTargetDependency section */
 		2071D36E18E27EA900B3C849 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2071D33F18E27EA900B3C849 /* GassyCow */;
+			target = 2071D33F18E27EA900B3C849 /* CowWrangler */;
 			targetProxy = 2071D36D18E27EA900B3C849 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -716,10 +718,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GassyCow/GassyCow-Prefix.pch";
-				INFOPLIST_FILE = "GassyCow/GassyCow-Info.plist";
+				GCC_PREFIX_HEADER = "GassyCow/CowWrangler-Prefix.pch";
+				INFOPLIST_FILE = "GassyCow/CowWrangler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CowWrangler;
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -735,10 +737,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GassyCow/GassyCow-Prefix.pch";
-				INFOPLIST_FILE = "GassyCow/GassyCow-Info.plist";
+				GCC_PREFIX_HEADER = "GassyCow/CowWrangler-Prefix.pch";
+				INFOPLIST_FILE = "GassyCow/CowWrangler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CowWrangler;
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -761,8 +763,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "GassyCowTests/GassyCowTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GassyCowTests/CowWranglerTests-Info.plist";
+				PRODUCT_NAME = CowWranglerTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -779,8 +781,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GassyCow/GassyCow-Prefix.pch";
-				INFOPLIST_FILE = "GassyCowTests/GassyCowTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GassyCowTests/CowWranglerTests-Info.plist";
+				PRODUCT_NAME = CowWranglerTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -789,7 +791,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2071D33B18E27EA900B3C849 /* Build configuration list for PBXProject "GassyCow" */ = {
+		2071D33B18E27EA900B3C849 /* Build configuration list for PBXProject "CowWrangler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2071D37718E27EA900B3C849 /* Debug */,
@@ -798,7 +800,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2071D37918E27EA900B3C849 /* Build configuration list for PBXNativeTarget "GassyCow" */ = {
+		2071D37918E27EA900B3C849 /* Build configuration list for PBXNativeTarget "CowWrangler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2071D37A18E27EA900B3C849 /* Debug */,
@@ -807,7 +809,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2071D37C18E27EA900B3C849 /* Build configuration list for PBXNativeTarget "GassyCowTests" */ = {
+		2071D37C18E27EA900B3C849 /* Build configuration list for PBXNativeTarget "CowWranglerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2071D37D18E27EA900B3C849 /* Debug */,

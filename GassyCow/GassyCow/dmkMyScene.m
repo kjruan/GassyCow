@@ -242,13 +242,13 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     _lostCowCount = 0;
     
     // Reset Score
-    _resetLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
-    _resetLabel.name = @"Reset";
-    _resetLabel.text = @"Reset";
-    _resetLabel.fontSize = 20.0;
-    _resetLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-    _resetLabel.position = CGPointMake(self.scene.size.width - 80, self.scene.size.height - 40);
-    [_hudLayer addChild:_resetLabel];
+//    _resetLabel = [SKLabelNode labelNodeWithFontNamed:@"Menlo-Regular"];
+//    _resetLabel.name = @"Reset";
+//    _resetLabel.text = @"Reset";
+//    _resetLabel.fontSize = 20.0;
+//    _resetLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+//    _resetLabel.position = CGPointMake(self.scene.size.width - 80, self.scene.size.height - 40);
+//    [_hudLayer addChild:_resetLabel];
     
     //Setup basic hud
     _score = [self getPlayerHighScore];
@@ -284,14 +284,12 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
              Cow *cow = (Cow *)body.node;
              
              CGFloat cowRotation = body.node.zRotation;
-             CGFloat fartSoundRand = ScalarRandomRange(1, 21);
-             int fart = (int) roundf(fartSoundRand);
+             CGFloat fsSoundRand = ScalarRandomRange(1, 21);
+             int fs = (int) roundf(fsSoundRand);
 
-             [self runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"Fart%i.mp3", fart] waitForCompletion:NO]];
+             [self runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"fs%i.mp3", fs] waitForCompletion:NO]];
 
-             //NSString *test = [NSString stringWithFormat:@"Fart%i", integerWidth];
-             //NSLog(@"Touch with fart sound: %@", test);
-             [cow startFartEmitter:cowRotation];
+             [cow startEmitter:cowRotation];
              [body applyForce:[cow travelVector:cowRotation]]; // atPoint:CGPointMake(cow.size.width/2, cow.size.height/2)];
          }
     }];

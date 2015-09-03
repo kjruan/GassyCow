@@ -71,9 +71,6 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
             _RightMod = 1;
             _ChangeMod = -1;
         }
-        
-        // NSLog(@"%f", self.physicsBody.area);
-        //[self addChild:[self fartEmitter:[[_cowChar valueForKey:@"Facing"] integerValue]]];
     }
     return self;
 }
@@ -151,18 +148,17 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     return cowChar;
 }
 
--(void)startFartEmitter:(CGFloat)direction
+-(void)startEmitter:(CGFloat)direction
 {
-    SKEmitterNode *fartEmitter =
+    SKEmitterNode *emitter =
     [NSKeyedUnarchiver unarchiveObjectWithFile:
-     [[NSBundle mainBundle] pathForResource:@"fart"
+     [[NSBundle mainBundle] pathForResource:@"fs"
                                      ofType:@"sks"]];
-    fartEmitter.position = CGPointMake(20, -4);
-    fartEmitter.name = @"fartEmitter";
+    emitter.position = CGPointMake(20, -4);
+    emitter.name = @"emitter";
     
-    fartEmitter.emissionAngle = direction;
-    //NSLog(@"%f", fartEmitter.emissionAngle);
-    [self addChild:fartEmitter];
+    emitter.emissionAngle = direction;
+    [self addChild:emitter];
 }
 
 

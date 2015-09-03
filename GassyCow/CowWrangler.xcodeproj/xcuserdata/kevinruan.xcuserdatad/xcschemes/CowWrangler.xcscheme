@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2071D33F18E27EA900B3C849"
-               BuildableName = "GassyCow.app"
-               BlueprintName = "GassyCow"
-               ReferencedContainer = "container:GassyCow.xcodeproj">
+               BuildableName = "CowWrangler.app"
+               BlueprintName = "CowWrangler"
+               ReferencedContainer = "container:CowWrangler.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2071D36718E27EA900B3C849"
-               BuildableName = "GassyCowTests.xctest"
-               BlueprintName = "GassyCowTests"
-               ReferencedContainer = "container:GassyCow.xcodeproj">
+               BuildableName = "CowWranglerTests.xctest"
+               BlueprintName = "CowWranglerTests"
+               ReferencedContainer = "container:CowWrangler.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2071D33F18E27EA900B3C849"
-            BuildableName = "GassyCow.app"
-            BlueprintName = "GassyCow"
-            ReferencedContainer = "container:GassyCow.xcodeproj">
+            BuildableName = "CowWrangler.app"
+            BlueprintName = "CowWrangler"
+            ReferencedContainer = "container:CowWrangler.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2071D33F18E27EA900B3C849"
-            BuildableName = "GassyCow.app"
-            BlueprintName = "GassyCow"
-            ReferencedContainer = "container:GassyCow.xcodeproj">
+            BuildableName = "CowWrangler.app"
+            BlueprintName = "CowWrangler"
+            ReferencedContainer = "container:CowWrangler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2071D33F18E27EA900B3C849"
-            BuildableName = "GassyCow.app"
-            BlueprintName = "GassyCow"
-            ReferencedContainer = "container:GassyCow.xcodeproj">
+            BuildableName = "CowWrangler.app"
+            BlueprintName = "CowWrangler"
+            ReferencedContainer = "container:CowWrangler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
