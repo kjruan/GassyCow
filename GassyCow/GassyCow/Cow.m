@@ -82,17 +82,17 @@ static inline CGFloat ScalarRandomRange(CGFloat min,
     SKTexture *cowIdel = [atlas textureNamed:@"Cow1"];
     
     NSMutableArray *textures = [NSMutableArray arrayWithCapacity:6];
-    for (int i = 1; i < 2; i++) {
+    for (int i = 1; i < 5; i++) {
         NSString *textureName = [NSString stringWithFormat:@"Cow%d", i];
         SKTexture *texture = [atlas textureNamed:textureName];
         [textures addObject:texture];
     }
     
-    for (int i = 2; i > 1; i--) {
-        NSString *textureName = [NSString stringWithFormat:@"Cow%d", i];
-        SKTexture *texture = [atlas textureNamed:textureName];
-        [textures addObject:texture];
-    }
+//    for (int i = 2; i > 1; i--) {
+//        NSString *textureName = [NSString stringWithFormat:@"Cow%d", i];
+//        SKTexture *texture = [atlas textureNamed:textureName];
+//        [textures addObject:texture];
+//    }
     
     // All parameters hardcoded. The idea is to randomize all the options in the future
     SKAction *stopAnimation = [SKAction runBlock:^{
