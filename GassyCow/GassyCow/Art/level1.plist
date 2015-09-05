@@ -5,7 +5,7 @@
 	<key>fontColor</key>
 	<string></string>
 	<key>cloudCountRange</key>
-	<string>{3, 6}</string>
+	<string>{2, 4}</string>
 	<key>cloudPosX</key>
 	<string>{i0, 500}</string>
 	<key>cloudPosY</key>
